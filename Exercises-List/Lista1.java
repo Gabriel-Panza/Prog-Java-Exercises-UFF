@@ -182,14 +182,15 @@ public class Lista1
 
     /* Questão 9 */
     /* Determine o que esta sendo printado */
-    public static void Loop() {
+    public static void Loop() 
+    {
         for (int i = 2; i <= 8; i = i + 2) 
         {
             for (int j = i; j <= 4; j++) 
             {
                 for (int k = 1; k <= j; k = k + i) 
                 {
-                    System.out.println(i + ", " + j + ", " + k);
+                    System.out.println(i + ", " + j + ", " + k); // (2 2 1), (2 3 1), (2 3 3), (2 4 1), (2 4 3), (4 4 1)
         
                 }
         
@@ -197,10 +198,86 @@ public class Lista1
         }
     }
 
+    /* Questão 10 */
+    public static void Investimento()
+    {
+        Scanner teclado = new Scanner(System.in);
+
+        System.out.println("\nInforme o valor a ser investido todo mes e quais os juros mensais que o seu investimento ira ter (separado por espaço)");
+        double valorInvestido = teclado.nextDouble(), juros = teclado.nextDouble(), valorFinal=valorInvestido;
+        char continua;
+
+        do
+        {
+            for (int i=0;i<12;i++)
+            {
+                valorFinal *= (1+(juros/100));
+                if (i<11)
+                    valorFinal += valorInvestido;
+            }
+            System.out.println("Saldo do investimento após 1 ano: " + valorFinal);
+            System.out.println("Deseja processar mais um ano? (S/N): ");
+            continua = teclado.next().charAt(0);
+            if (continua=='S')
+                continue;
+            else if (continua=='N')
+                break;
+            else
+            {
+                System.out.println("Comando Inválido! Encerrando o programa...");
+                break;
+            }
+            
+        }while(true);
+
+        teclado.close();
+    }
+
+    /* Questão 11 */
+    public static void RaizQuadrada()
+    {
+        Scanner teclado = new Scanner(System.in);
+        
+        do
+        {
+            System.out.println("Informe o numero inteiro a ser realizado a raiz quadrada e o limite de casas decimais (separados por espaco)");
+            int numero = teclado.nextInt(), casasDecimais = teclado.nextInt();
+            if (numero<0)
+                break;
+            double numeroPosRaiz = Math.pow(numero,1f/2);
+            numeroPosRaiz *= Math.pow(10,casasDecimais);;
+            
+            double numeroPosConversaoCasas = (int)numeroPosRaiz;
+            numeroPosConversaoCasas /= Math.pow(10,casasDecimais);
+            
+            System.out.println("O resultado da operacao eh: " + numeroPosConversaoCasas);
+        }while(true);
+
+        teclado.close();
+    }
+
+    /* Questao 12 */
+    public static void JogoDaVelha()
+    {
+
+    }
+
+    /* Questao 13 */
+    public static void OrdenaVetor()
+    {
+        
+    }
+
+    /* Questao 14 */
+    public static void CombinaVetor()
+    {
+        
+    }
+
     /* Codigo main no qual chamo as funções */
     public static void main(String[] args)
     {
-        Loop();
+        JogoDaVelha();
     }
 
 }
