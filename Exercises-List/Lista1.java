@@ -1,4 +1,6 @@
+import java.util.Random;
 import java.util.Scanner;
+import java.util.Vector;
 
 public class Lista1 
 {
@@ -259,25 +261,66 @@ public class Lista1
     /* Questao 12 */
     public static void JogoDaVelha()
     {
-
+        Scanner teclado = new Scanner(System.in);
+        teclado.close();
     }
 
     /* Questao 13 */
     public static void OrdenaVetor()
-    {
-        
+    {        
+        Random number = new Random();
+        Vector<Integer> v = new Vector<Integer>();
+        for (int i =0;i<100;i++)
+        {
+            v.add(number.nextInt(1000));
+        }
+        v.sort(null);
+        for (int i =0;i<100;i++)
+        {
+            System.out.print(v.elementAt(i) + ", ");;
+        }
     }
 
     /* Questao 14 */
     public static void CombinaVetor()
     {
+        Random number = new Random();
+        Vector<Integer> v1 = new Vector<Integer>();
+        Vector<Integer> v2 = new Vector<Integer>();
+        Vector<Integer> vf = new Vector<Integer>();
+        for (int i =0;i<50;i++)
+        {
+            v1.add(number.nextInt(100));
+            v2.add(number.nextInt(100));
+        }
         
+        v1.sort(null);
+        v2.sort(null);
+        for (int i =0;i<50;i++)
+        {
+            if (v1.elementAt(i)>v2.elementAt(i))
+            {
+                vf.add(v2.elementAt(i));
+                vf.add(v1.elementAt(i));
+            }
+            else
+            {
+                vf.add(v1.elementAt(i));
+                vf.add(v2.elementAt(i));
+            }
+        }
+
+        vf.sort(null);
+        for (int i =0;i<100;i++)
+        {
+            System.out.print(vf.elementAt(i) + ", ");;
+        }
     }
 
     /* Codigo main no qual chamo as funções */
     public static void main(String[] args)
     {
-        JogoDaVelha();
+        CombinaVetor();
     }
 
 }
