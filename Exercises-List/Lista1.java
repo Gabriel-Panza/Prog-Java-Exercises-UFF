@@ -262,6 +262,77 @@ public class Lista1
     public static void JogoDaVelha()
     {
         Scanner teclado = new Scanner(System.in);
+        Random chance = new Random();
+
+        int play, contBolas=0, contX=0;
+        char v[][] = new char[3][3];
+        for (int i=0;i<3;i++)
+        {
+            for (int j=0;j<3;j++)
+            {
+                play = chance.nextInt(100);
+                if (i!=j)   
+                { 
+                    if (contBolas<3 && contX<3)
+                    {
+                        if (play > 50)
+                        {
+                            v[i][j] = 'O';
+                            contBolas+= 1;
+                        }
+                        else
+                        {
+                            v[i][j] = 'X';
+                            contX += 1;
+                        }
+                    }
+                    else
+                    {
+                        if (contX==3)
+                            v[i][j] = 'O';
+                        if (contBolas==3)
+                            v[i][j] = 'X';
+                    }
+                }
+                else
+                    v[i][j] = ' ';
+            }
+        }
+
+        // Jogo da velha antes da decisao
+        for (int i=0;i<3;i++)
+        {
+            System.out.print("\n");
+            for (int j=0;j<3;j++)
+            {
+                System.out.print(v[i][j] + " ");
+            }
+        }
+
+        System.out.println("\nDiga onde o X deve ser jogado para que o jogador 1 ganhe: \n0 -> esquerda, \n1 -> meio, \n2-> direita, \n3-> nao tem como ganhar/empate garantido");
+        int x = teclado.nextInt();
+        if (x==0 || x==1 || x==2)
+        {
+            v[x][x] = 'X';
+
+            // Jogo da velha depois da decisao certa
+            for (int i=0;i<3;i++)
+            {
+                System.out.print("\n");
+                for (int j=0;j<3;j++)
+                {
+                    System.out.print(v[i][j] + " ");
+                }
+            }
+
+            // Resultado
+            System.out.println("\nParabens, Jogador! Voce venceu!");
+        }
+        else if (x==3)
+            System.out.println("Deu empate!");
+        else
+            System.out.println("Error! Comando Invalido! Encerrando simulacao...");
+
         teclado.close();
     }
 
@@ -293,9 +364,9 @@ public class Lista1
             v1.add(number.nextInt(100));
             v2.add(number.nextInt(100));
         }
-        
         v1.sort(null);
         v2.sort(null);
+
         for (int i =0;i<50;i++)
         {
             if (v1.elementAt(i)>v2.elementAt(i))
@@ -309,8 +380,8 @@ public class Lista1
                 vf.add(v2.elementAt(i));
             }
         }
-
         vf.sort(null);
+
         for (int i =0;i<100;i++)
         {
             System.out.print(vf.elementAt(i) + ", ");;
@@ -320,7 +391,7 @@ public class Lista1
     /* Codigo main no qual chamo as funções */
     public static void main(String[] args)
     {
-        CombinaVetor();
+        JogoDaVelha();
     }
 
 }
