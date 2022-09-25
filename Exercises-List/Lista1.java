@@ -388,10 +388,79 @@ public class Lista1
         }
     }
 
+    /* Questao 15 */
+    public static String CalculaStatus(double nota, String condicao)
+    {
+        if (nota>=6)
+            condicao = "Aprovado";
+        if (4<=nota && nota<6)
+            condicao = "Verificacao Suplementar";
+        if (nota<4)
+            condicao = "Reprovado";
+        return condicao;
+    }
+    public static double CalculaMedia(int p1, int p2, int p3)
+    {
+        return (float)(p1*2 + p2*3 + p3*5)/10;
+    }
+    public static void Situacao()
+    {
+        Scanner teclado = new Scanner(System.in);
+
+        int nota1,nota2,nota3;
+        double media;
+        String condicao;
+
+        System.out.println("\nDigite as notas das 3 provas realizadas neste periodo:");
+        System.out.print("Nota 1: ");
+        nota1 = teclado.nextInt();
+        System.out.print("Nota 2: ");
+        nota2 = teclado.nextInt();
+        System.out.print("Nota 3: ");
+        nota3 = teclado.nextInt();
+
+        media = CalculaMedia(nota1,nota2,nota3);
+        condicao = CalculaStatus(media, "");
+        System.out.println("\nMedia final: " + media);
+        System.out.println("Condicao: " + condicao);
+
+        teclado.close();
+    }
+
+    /* Questao 16 */
+    public static int horas(int tempo)
+    {
+        return tempo/3600;
+    }
+    public static int minutos(int tempo)
+    {
+        return tempo/60 - (horas(tempo)*60);
+    }
+    public static int segundos(int tempo)
+    {
+        return tempo - (horas(tempo)*3600 + minutos(tempo)*60);
+    }
+    public static void EscritaDoTempo(int horas, int minutos, int segundos)
+    {
+        System.out.println(horas + ":" + minutos + ":" + segundos);
+    }
+    public static void LeituraDoTempo()
+    {
+        Scanner teclado = new Scanner(System.in);
+    
+        System.out.print("Digite um numero de segundos para ser convertido em horas e minutos: ");
+        int tempoSegundos = teclado.nextInt();
+        int horas = horas(tempoSegundos);
+        int minutos = minutos(tempoSegundos);
+        int segundos = segundos(tempoSegundos);
+        EscritaDoTempo(horas, minutos, segundos);
+
+        teclado.close();
+    }
+
     /* Codigo main no qual chamo as funções */
     public static void main(String[] args)
     {
-        JogoDaVelha();
+        LeituraDoTempo();
     }
-
 }
