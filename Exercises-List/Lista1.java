@@ -737,7 +737,9 @@ public class Lista1
             }
 
             System.out.print("O numero informado por extenso eh: ");
-            /* Chamada das funçoes que printarão o número */
+            /*                                                                                     
+            Chamada das funçoes que printarão o número usando a mesma logica da questao anterior 
+                                                                                                */
         } while(true);
 
         teclado.close();
