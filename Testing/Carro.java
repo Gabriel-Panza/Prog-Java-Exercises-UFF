@@ -1,6 +1,24 @@
-package ClassTraining;
+class Carro
+{
+    public int velocidade;
+    
+    public void acelera() 
+    {
+        velocidade++;
+    }
+    
+    public void freia() 
+    {
+        velocidade--;
+    }
 
-public class TypesOfCar 
+    public Carro(int velocidadeInicial) 
+    {
+        velocidade = velocidadeInicial;
+    }
+}
+
+class TypesOfCar 
 {
     public static void main(String[] args)
     {
