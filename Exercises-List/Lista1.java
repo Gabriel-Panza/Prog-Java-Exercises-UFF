@@ -1,6 +1,5 @@
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class Lista1 
 {
@@ -407,15 +406,25 @@ public class Lista1
     public static void OrdenaVetor()
     {        
         Random number = new Random();
-        Vector<Integer> v = new Vector<Integer>();
+        int v[] = new int[100];
         for (int i =0;i<100;i++)
         {
-            v.add(number.nextInt(1000));
+            v[i] = number.nextInt(1000);
         }
-        v.sort(null);
-        for (int i =0;i<100;i++)
+        for (int i=0;i<50;i++)
         {
-            System.out.print(v.elementAt(i) + ", ");;
+            for (int j=i;j<50;j++)
+            {
+                if (v[i]>v[j])  
+                {  
+                    int temp= v[i];
+                    v[i] = v[j];
+                    v[j] = temp; 
+                }
+            }
+        }        for (int i =0;i<100;i++)
+        {
+            System.out.print(v[i] + ", ");;
         }
     }
 
