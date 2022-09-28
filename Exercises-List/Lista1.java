@@ -423,35 +423,72 @@ public class Lista1
     public static void CombinaVetor()
     {
         Random number = new Random();
-        Vector<Integer> v1 = new Vector<Integer>();
-        Vector<Integer> v2 = new Vector<Integer>();
-        Vector<Integer> vf = new Vector<Integer>();
+        int v1[] = new int[50];
+        int v2[] = new int[50];
+        int vf[] = new int[100];
+        
         for (int i =0;i<50;i++)
         {
-            v1.add(number.nextInt(100));
-            v2.add(number.nextInt(100));
+            v1[i] = number.nextInt(100);
+            v2[i] = number.nextInt(100);
         }
-        v1.sort(null);
-        v2.sort(null);
-
-        for (int i =0;i<50;i++)
+        for (int i=0;i<50;i++)
         {
-            if (v1.elementAt(i)>v2.elementAt(i))
+            for (int j=i;j<50;j++)
             {
-                vf.add(v2.elementAt(i));
-                vf.add(v1.elementAt(i));
-            }
-            else
-            {
-                vf.add(v1.elementAt(i));
-                vf.add(v2.elementAt(i));
+                if (v1[i]>v1[j])  
+                {  
+                    int temp= v1[i];
+                    v1[i] = v1[j];
+                    v1[j] = temp; 
+                }
             }
         }
-        vf.sort(null);
+        for (int i=0;i<50;i++)
+        {
+            for (int j=i;j<50;j++)
+            {
+                if (v1[i]<v2[j])  
+                {  
+                    int temp= v1[i];
+                    v1[i] = v2[j];
+                    v2[j] = temp; 
+                }
+            }
+            for (int j=i;j<50;j++)
+            {
+                if (v1[i]>v2[j])  
+                {  
+                    int temp = v1[i];
+                    v1[i] = v2[j];
+                    v2[j] = temp; 
+                }
+            }
+        }
 
+        // A partir daqui v1 tem os 50 primeiros termos e v2 tem os ultimos 50 termos. So falta organizar o v2.
+        for (int i=0;i<50;i++)
+        {
+            for (int j=i;j<50;j++)
+            {
+                if (v2[i]>v2[j])  
+                {  
+                    int temp= v2[i];
+                    v2[i] = v2[j];
+                    v2[j] = temp; 
+                }
+            }
+        }
+
+        // Preencho o vf com tudo organizado
+        for (int k=0;k<50;k++)
+        {
+            vf[k]=v1[k];
+            vf[50+k]=v2[k];
+        }
         for (int i =0;i<100;i++)
         {
-            System.out.print(vf.elementAt(i) + ", ");;
+            System.out.print(vf[i] + ", ");
         }
     }
 
@@ -747,6 +784,6 @@ public class Lista1
     /* Codigo main no qual chamo as funções */
     public static void main(String[] args)
     {
-        LeituraDoNumeroRomano();
+        CombinaVetor();
     }
 }
