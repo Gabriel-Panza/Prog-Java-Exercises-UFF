@@ -422,7 +422,8 @@ public class Lista1
                     v[j] = temp; 
                 }
             }
-        }        for (int i =0;i<100;i++)
+        }        
+        for (int i =0;i<100;i++)
         {
             System.out.print(v[i] + ", ");;
         }
@@ -790,6 +791,7 @@ public class Lista1
 
         teclado.close();
     }
+
     /* Codigo main no qual chamo as funções */
     public static void main(String[] args)
     {

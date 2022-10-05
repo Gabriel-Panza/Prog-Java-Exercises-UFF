@@ -1,23 +1,3 @@
-class Carro
-{
-    public int velocidade;
-    
-    public void acelera() 
-    {
-        velocidade++;
-    }
-    
-    public void freia() 
-    {
-        velocidade--;
-    }
-
-    public Carro(int velocidadeInicial) 
-    {
-        velocidade = velocidadeInicial;
-    }
-}
-
 class TypesOfCar 
 {
     public static void main(String[] args)
@@ -26,7 +6,14 @@ class TypesOfCar
         Carro bmw = new Carro(15);
         fusca.freia();
         bmw.acelera();
-        
+
+        // Ao printar o objeto, printa-se o endereço da Classe
+        System.out.println(fusca);
+        System.out.println(bmw);
+
+        // Igualamos o endereço do fusca ao do bmw, sobrescrevendo seus atributos
+        fusca = bmw;
+
         if (fusca.velocidade<bmw.velocidade)
         {
             System.out.println("O fusca eh mais lento que uma bmw");
@@ -39,5 +26,5 @@ class TypesOfCar
         {
             System.out.println("O fusca tem a mesma velocidade que uma bmw");
         }
-    }    
+    }        
 }
