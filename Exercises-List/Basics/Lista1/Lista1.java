@@ -1,3 +1,4 @@
+package Basics.Lista1;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -532,7 +533,6 @@ public class Lista1
         nota2 = teclado.nextInt();
         System.out.print("Nota 3: ");
         nota3 = teclado.nextInt();
-
         media = CalculaMedia(nota1,nota2,nota3);
         condicao = CalculaStatus(media, "");
         System.out.println("\nMedia final: " + media);

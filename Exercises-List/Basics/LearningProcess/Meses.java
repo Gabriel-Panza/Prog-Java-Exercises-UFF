@@ -1,3 +1,4 @@
+package Basics.LearningProcess;
 import java.util.Scanner;
 
 class Meses 

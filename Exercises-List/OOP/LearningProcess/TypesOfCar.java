@@ -1,4 +1,5 @@
-class TypesOfCar 
+package OOP.LearningProcess;
+public class TypesOfCar 
 {
     public static void main(String[] args)
     {
@@ -14,11 +15,11 @@ class TypesOfCar
         // Igualamos o endereço do fusca ao do bmw, sobrescrevendo seus atributos
         fusca = bmw;
 
-        if (fusca.velocidade<bmw.velocidade)
+        if (fusca.getVelocidade()<bmw.getVelocidade())
         {
             System.out.println("O fusca eh mais lento que uma bmw");
         }
-        else if(fusca.velocidade>bmw.velocidade)
+        else if(fusca.getVelocidade()>bmw.getVelocidade())
         {
             System.out.println("O fusca eh mais rapido que uma bmw");
         }

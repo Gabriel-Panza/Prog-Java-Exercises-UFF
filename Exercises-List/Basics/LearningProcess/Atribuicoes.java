@@ -1,3 +1,4 @@
+package Basics.LearningProcess;
 class Atribuicoes 
 {
     public static void main(String[] args) 
