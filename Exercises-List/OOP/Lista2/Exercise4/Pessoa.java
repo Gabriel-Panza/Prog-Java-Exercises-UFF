@@ -2,10 +2,10 @@ public class Pessoa
 {
     private String nome;
     private int idade;
-    private Pessoa pai;
-    private Pessoa mae;
+    private String pai;
+    private String mae;
 
-    public Pessoa(String nomeDaPessoa, int idadeDaPessoa, Pessoa paiDaPessoa, Pessoa maeDaPessoa)
+    public Pessoa(String nomeDaPessoa, int idadeDaPessoa, String paiDaPessoa, String maeDaPessoa)
     {
         nome = nomeDaPessoa;
         idade = idadeDaPessoa;
@@ -30,19 +30,19 @@ public class Pessoa
         return this.idade;
     }
 
-    public void setPai(Pessoa paiDaPessoa)
+    public void setPai(String paiDaPessoa)
     {
         pai = paiDaPessoa;
     }
-    public Pessoa getPai()
+    public String getPai()
     {
         return pai;
     }
-    public void setMae(Pessoa maeDaPessoa)
+    public void setMae(String maeDaPessoa)
     {
         mae = maeDaPessoa;
     }
-    public Pessoa getMae()
+    public String getMae()
     {
         return mae;
     }
