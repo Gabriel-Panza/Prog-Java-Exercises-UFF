@@ -1,5 +1,7 @@
 package OOP.Lista2.Exercise1;
 
+import java.text.DecimalFormat;
+
 public class Pedido 
 {
     private Produto[] itens;
@@ -23,9 +25,10 @@ public class Pedido
         this.indice=0;
     }
     
-    public double GetTotal()
+    public String GetTotal()
     {
-        return total;
+        DecimalFormat numberFormat = new DecimalFormat("#.00");
+        return numberFormat.format(total);
     }
 
     public void CalculaTotal(int quantidadeDeItens)

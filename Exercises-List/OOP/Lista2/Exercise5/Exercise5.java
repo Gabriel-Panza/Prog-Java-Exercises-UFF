@@ -1,26 +1,11 @@
 package OOP.Lista2.Exercise5;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Exercise5 
 {
-    public static void main(String[] args) 
-    {
-        Scanner teclado = new Scanner(System.in);
-        
-        System.out.println("Informe a forma geometrica que deseje calcular a area:");
-        System.out.println("(1) - Quadrado\n (2) - Retângulo\n (3) - Triângulo\n (4) - Círculo\n");
-        int formaGeometrica = teclado.nextInt();
-        double area = calculaArea(formaGeometrica, teclado);
-        if (area>=0)
-            System.out.println("Area: " + area);
-        else
-            System.out.println("Figura geometrica invalida");
-
-        teclado.close();
-    }
-
-    public static double calculaArea(int formaGeometrica, Scanner teclado)
+    public static double calculaArea(int formaGeometrica, Scanner teclado) throws InputMismatchException
     {
         int[] x,y;
         FormasGeometricas figura;
@@ -85,5 +70,26 @@ public class Exercise5
                 return -1;
         }
         return figura.getArea();
+    }
+    public static void main(String[] args) 
+    {
+        Scanner teclado = new Scanner(System.in);
+        
+        System.out.println("Informe a forma geometrica que deseje calcular a area:");
+        System.out.println("(1) - Quadrado\n (2) - Retângulo\n (3) - Triângulo\n (4) - Círculo\n");
+        double area;
+        try {
+            int formaGeometrica = teclado.nextInt();
+            area = calculaArea(formaGeometrica, teclado);
+        } catch (InputMismatchException e) {
+            System.out.println("\nHouve um erro na hora de processar as entradas. Verifique as informacoes e tente novamente!");
+            return;
+        }
+        if (area>=0)
+        System.out.println("Area: " + area);
+        else
+        System.out.println("Figura geometrica invalida");
+        
+        teclado.close();
     }
 }

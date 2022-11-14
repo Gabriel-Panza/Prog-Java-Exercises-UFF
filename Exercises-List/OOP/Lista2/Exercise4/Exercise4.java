@@ -1,24 +1,9 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Exercise4
 {
-    public static void main(String[] args) 
-    {
-        Scanner teclado = new Scanner(System.in);
-        
-        System.out.print("Informe quantas pessoas sua arvore geneologica tem: ");
-        int tam = teclado.nextInt();
-        Pessoa arvoreGeneologica[] = new Pessoa[tam];
-        
-        System.out.print("\nPreenchendo a arvore geneologica de baixo para cima...\n");
-        preencheArvoreGeneologica(arvoreGeneologica, tam, teclado);
-        System.out.print("\nPrintando a arvore geneologica de cima para baixo...\n");
-        printaArvoreGeneologica(arvoreGeneologica, tam);
-
-        teclado.close();
-    }
-
-    private static void preencheArvoreGeneologica(Pessoa[] arvoreGeneologica, int tam, Scanner teclado) 
+    private static void preencheArvoreGeneologica(Pessoa[] arvoreGeneologica, int tam, Scanner teclado) throws InputMismatchException
     {
         for (int i=tam-1;i>-1;i--)
         {
@@ -34,7 +19,7 @@ public class Exercise4
             arvoreGeneologica[i] = pessoa;
         }
     }
-    private static void printaArvoreGeneologica(Pessoa[] arvoreDaPessoa, int tam) 
+    private static void printaArvoreGeneologica(Pessoa[] arvoreDaPessoa, int tam) throws ArrayIndexOutOfBoundsException
     {
         for (int i=0;i<tam;i++)
         {
@@ -44,5 +29,32 @@ public class Exercise4
             System.out.println("-> pai: " + arvoreDaPessoa[i].getPai());
             System.out.println("-> mae: " + arvoreDaPessoa[i].getMae());
         }
+    }
+    public static void main(String[] args) 
+    {
+        Scanner teclado = new Scanner(System.in);
+        
+        System.out.print("Informe quantas pessoas sua arvore geneologica tem: ");
+        int tam = teclado.nextInt();
+        Pessoa arvoreGeneologica[] = new Pessoa[tam];
+        
+        try {
+            System.out.print("\nPreenchendo a arvore geneologica de baixo para cima...\n");
+            preencheArvoreGeneologica(arvoreGeneologica, tam, teclado);
+        } 
+        catch (InputMismatchException e) {
+            System.out.println("\nHouve um erro na hora de preencher a arvore. Verifique se preencheu as informacoes corretamente e tente novamente...");
+            return;
+        }
+        try {
+            System.out.print("\nPrintando a arvore geneologica de cima para baixo...\n");
+            printaArvoreGeneologica(arvoreGeneologica, tam);
+        } 
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("\nHouve um erro na hora de processar a arvore. Tente novamente mais tarde...");
+            return;
+        }
+    
+        teclado.close();
     }
 }
