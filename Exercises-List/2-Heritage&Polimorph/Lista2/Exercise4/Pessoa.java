@@ -2,15 +2,15 @@ public class Pessoa
 {
     private String nome;
     private int idade;
-    private String pai;
-    private String mae;
+    private Pessoa pai;
+    private Pessoa mae;
 
     public Pessoa(String nomeDaPessoa, int idadeDaPessoa, String paiDaPessoa, String maeDaPessoa)
     {
         nome = nomeDaPessoa;
         idade = idadeDaPessoa;
-        pai = paiDaPessoa;
-        mae = maeDaPessoa;
+        pai.nome = paiDaPessoa;
+        mae.nome = maeDaPessoa;
     }
 
     public void setNome(String nomeDaPessoa)
@@ -32,18 +32,18 @@ public class Pessoa
 
     public void setPai(String paiDaPessoa)
     {
-        pai = paiDaPessoa;
+        pai.nome = paiDaPessoa;
     }
     public String getPai()
     {
-        return pai;
+        return pai.nome;
     }
     public void setMae(String maeDaPessoa)
     {
-        mae = maeDaPessoa;
+        mae.nome = maeDaPessoa;
     }
     public String getMae()
     {
-        return mae;
+        return mae.nome;
     }
 }
