@@ -1,4 +1,4 @@
-package OOP.Lista2.Exercise1;
+package HeritageAndPolimorph.Lista2.Exercise1;
 
 public class Produto 
 {

@@ -1,12 +1,12 @@
-package OOP.Lista2.Exercise5;
+package HeritageAndPolimorph.Lista2.Exercise5;
 
-public class Triangulo extends FormasGeometricas
+public class Circulo extends FormasGeometricas
 {
     private int[] x;
     private int[] y;
     private double area;
 
-    public Triangulo(int[] pontoX, int[] pontoY)
+    public  Circulo(int[] pontoX, int[] pontoY)
     {
         super(pontoX, pontoY);
     }
@@ -26,12 +26,10 @@ public class Triangulo extends FormasGeometricas
     
     public void calculaArea()
     {
-        double a = ((x[0]*y[1] + x[1]*y[2] + x[2]*y[0]) - (x[1]*y[0] + x[2]*y[1] + x[0]*y[2]))/2;
-        if(a<0)
-            a*=-1;
-        this.area = a;
+        double pi = 3.14;
+        this.area = pi * (Math.pow((x[1] - x[0]),2) + Math.pow((y[1] - y[0]),2));
     }
-    public double getArea() 
+    public double getArea()
     {
         return area;
     }    

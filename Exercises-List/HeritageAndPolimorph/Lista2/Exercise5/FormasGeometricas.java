@@ -1,14 +1,15 @@
-package OOP.Lista2.Exercise5;
+package HeritageAndPolimorph.Lista2.Exercise5;
 
-public class Retangulo extends FormasGeometricas
+public abstract class FormasGeometricas
 {
     private int[] x;
     private int[] y;
     private double area;
 
-    public Retangulo(int[] pontoX, int[] pontoY)
+    public FormasGeometricas(int[] pontoX, int[] pontoY)
     {
-        super(pontoX, pontoY);
+        x = pontoX;
+        y = pontoY;
     }
 
     public void setX(int[] x) {
@@ -23,16 +24,9 @@ public class Retangulo extends FormasGeometricas
     public int[] getY() {
         return y;
     }
-    
-    public void calculaArea()
-    {
-        double a = (x[1] - x[0]) * (y[1] - y[0]);
-        if(a<0)
-            a*=-1;
-        this.area = a; 
-    }
+    public abstract void calculaArea();
     public double getArea() 
     {
         return area;
-    }    
+    }
 }

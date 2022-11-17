@@ -1,4 +1,5 @@
-package OOP.Lista2.Exercise1;
+package HeritageAndPolimorph.Lista2.Exercise1;
+
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
@@ -27,7 +28,13 @@ public class Exercise1
         Scanner teclado = new Scanner(System.in);
 
         System.out.print("Informe a quantidade de itens no seu pedido: ");
-        int quantidadeDeItens = teclado.nextInt();
+        int quantidadeDeItens=0;
+        try {
+            quantidadeDeItens = teclado.nextInt();    
+        } 
+        catch (InputMismatchException e) {
+            System.out.println("Houve um erro na hora de processar as entradas. Tente novamente prestando mais atencao nas informacoes pedidas.");
+        }
         String formasDePagamento[] = {"Dinheiro","Cheque","Cartao"};
         Pedido pedido = new Pedido(quantidadeDeItens);
         

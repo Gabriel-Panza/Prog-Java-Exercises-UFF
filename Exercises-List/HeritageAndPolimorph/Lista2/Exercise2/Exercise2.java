@@ -1,4 +1,4 @@
-package OOP.Lista2.Exercise2;
+package HeritageAndPolimorph.Lista2.Exercise2;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

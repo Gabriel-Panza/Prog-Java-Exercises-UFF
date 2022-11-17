@@ -1,4 +1,4 @@
-package OOP.LearningProcess;
+package HeritageAndPolimorph.LearningProcess;
 
 import java.util.Scanner;
 

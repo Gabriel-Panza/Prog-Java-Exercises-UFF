@@ -1,4 +1,4 @@
-package OOP.LearningProcess;
+package HeritageAndPolimorph.LearningProcess;
 public class TypesOfCar 
 {
     public static void main(String[] args)

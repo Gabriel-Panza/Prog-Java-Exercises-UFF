@@ -1,12 +1,12 @@
-package OOP.Lista2.Exercise5;
+package HeritageAndPolimorph.Lista2.Exercise5;
 
-public class Circulo extends FormasGeometricas
+public class Quadrado extends FormasGeometricas
 {
     private int[] x;
     private int[] y;
     private double area;
 
-    public  Circulo(int[] pontoX, int[] pontoY)
+    public Quadrado(int[] pontoX, int[] pontoY)
     {
         super(pontoX, pontoY);
     }
@@ -26,11 +26,10 @@ public class Circulo extends FormasGeometricas
     
     public void calculaArea()
     {
-        double pi = 3.14;
-        this.area = pi * (Math.pow((x[1] - x[0]),2) + Math.pow((y[1] - y[0]),2));
+        this.area = (Math.pow((x[1] - x[0]),2) + Math.pow((y[1] - y[0]),2)) / 2;
     }
-    public double getArea()
+    public double getArea() 
     {
         return area;
-    }    
+    }
 }

@@ -1,4 +1,4 @@
-package OOP.Lista2.Exercise3;
+package HeritageAndPolimorph.Lista2.Exercise3;
 import java.util.Random;
 
 public class Emprestimo 

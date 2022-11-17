@@ -1,4 +1,4 @@
-package OOP.Lista2.Exercise3;
+package HeritageAndPolimorph.Lista2.Exercise3;
 import java.text.DecimalFormat;
 import java.util.InputMismatchException;
 import java.util.Random;
