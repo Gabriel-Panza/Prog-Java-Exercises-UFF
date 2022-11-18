@@ -38,9 +38,10 @@ public class Agenda extends Ordenador
     public Contato[] AddContato(String nome, int telefone, int quantidadeDeContatos)
     {
         Contato novoContato = new Contato(nome, telefone);
-        Contato[] contatosAux = new Contato[++quantidadeDeContatos];
-        contatosAux = contatos;
-        contatosAux[--quantidadeDeContatos] = novoContato;
+        Contato[] contatosAux = new Contato[quantidadeDeContatos+1];
+        for (int i=0; i<quantidadeDeContatos; i++)
+            contatosAux[i] = contatos[i];
+        contatosAux[quantidadeDeContatos] = novoContato;
         return contatosAux;
     }
 
@@ -57,9 +58,31 @@ public class Agenda extends Ordenador
         return contatosAux;
     }
 
+    public Contato BuscaContato(String nome)
+    {
+        while (contatos[indice++] != null)
+        {
+            if (contatos[indice].GetNome() != nome)
+            {
+                return contatos[indice];
+            }
+        }
+        return null;
+    }
+
+    public int ContaTotalContatos(String nome)
+    {
+        cont=0;
+        while (contatos[indice++] != null)
+        {
+            cont++;
+        }
+        return cont;
+    }
+
     public void OrdenaAlfabetico(int quantidadeDeContatos)
     {
-        Contato aux = new Contato(null, 0);
+        Contato aux;
         for (int i=0;i<quantidadeDeContatos-1;i++)
         {
             if (CharToInt(contatos[i].GetNome()) > CharToInt(contatos[i+1].GetNome()))
