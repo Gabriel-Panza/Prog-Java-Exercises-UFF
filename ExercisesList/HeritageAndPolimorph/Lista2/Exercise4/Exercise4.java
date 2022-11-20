@@ -19,12 +19,11 @@ public class Exercise4
             pai.setNome(teclado.next());
             System.out.print("Informe a idade do pai: ");
             pai.setIdade(teclado.nextInt());
+            pessoa.setPai(pai);
             System.out.print("Informe o nome da mae da pessoa: ");
             mae.setNome(teclado.next());
             System.out.print("Informe a idade da mae: ");
             mae.setIdade(teclado.nextInt());
-            
-            pessoa.setPai(pai);
             pessoa.setMae(mae);
             arvoreGeneologica[i] = pessoa;
         }
@@ -36,8 +35,8 @@ public class Exercise4
             System.out.print("\n");
             System.out.println("-> nome: " + arvoreDaPessoa[i].getNome());
             System.out.println("-> idade: " + arvoreDaPessoa[i].getIdade());
-            System.out.println("-> pai: " + arvoreDaPessoa[i].getPai());
-            System.out.println("-> mae: " + arvoreDaPessoa[i].getMae());
+            System.out.println("-> pai: " + arvoreDaPessoa[i].getPai().getNome());
+            System.out.println("-> mae: " + arvoreDaPessoa[i].getMae().getNome());
         }
     }
     public static void main(String[] args) 
