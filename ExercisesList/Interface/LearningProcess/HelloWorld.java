@@ -1,6 +1,8 @@
+package Interface.LearningProcess;
+
 import javax.swing.*;
+import java.awt.*;
 // import javax.swing.event.*;
-// import java.awt.*;
 // import java.awt.event.*;
 
 public class HelloWorld
@@ -17,13 +19,14 @@ public class HelloWorld
         
         ImageIcon icone = new ImageIcon("images/barra.png");
         JButton botao = new JButton ("Hello World", icone);
-        botao.setBounds(frame.getWidth()/2 - 150, frame.getHeight()/2 - 50, 200, 45);
+        botao.setLocation(frame.getWidth()/2 - 150, frame.getHeight()/2 - 50);
         botao.setVerticalTextPosition (AbstractButton.CENTER);
         botao.setHorizontalTextPosition (AbstractButton.LEFT);
         botao.setToolTipText ("Hello World means 'hi to the world'");
         botao.setEnabled (true);
         
         painel.add(botao);
+        painel.setBackground(Color.BLACK);
         frame.getContentPane().add(painel);
         
         boolean visivel = botao.isVisible();
