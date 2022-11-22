@@ -29,7 +29,7 @@ public class Retangulo extends FormasGeometricas
         double a = (x[1] - x[0]) * (y[1] - y[0]);
         if(a<0)
             a*=-1;
-        this.area = a; 
+        this.area = a;
     }
     public double getArea() 
     {

@@ -24,7 +24,9 @@ public abstract class FormasGeometricas
     public int[] getY() {
         return y;
     }
+    
     public abstract void calculaArea();
+    
     public double getArea() 
     {
         return area;
