@@ -2,8 +2,8 @@ package Interface.LearningProcess;
 
 import javax.swing.*;
 import java.awt.*;
-// import javax.swing.event.*;
-// import java.awt.event.*;
+import javax.swing.event.*;
+import java.awt.event.*;
 
 public class HelloWorld
 {
@@ -11,25 +11,34 @@ public class HelloWorld
     {
         JFrame frame = new JFrame("Hello World");
         frame.setSize(1280,720);
+
+        JPanel painel = new JPanel();
+        painel.setBackground(Color.BLACK);
+        
+        // Container container = frame.getContentPane();
+        // container.setLayout(new BorderLayout());;
+        
+        JButton botao1 = new JButton ("Hello World");
+        JButton botao2 = new JButton ("Hi World");
+
+        botao1.setVerticalTextPosition (AbstractButton.CENTER);
+        botao1.setHorizontalTextPosition (AbstractButton.LEFT);
+        botao1.setToolTipText ("Hello World means 'hi to the world'");
+        botao1.setEnabled (true);
+
+        botao2.setVerticalTextPosition (AbstractButton.CENTER);
+        botao2.setHorizontalTextPosition (AbstractButton.LEFT);
+        botao2.setToolTipText ("Hello World means 'hi to the world'");
+        botao2.setEnabled (true);
+        
+        painel.setLayout(new FlowLayout());
+        painel.add(botao1);
+        painel.add(botao2);
+        frame.getContentPane().add(painel);
+
         frame.setVisible(true);    
         
-        JPanel painel = new JPanel ();
-        painel.setSize(1280,720);
-        painel.setVisible(true);
-        
-        ImageIcon icone = new ImageIcon("images/barra.png");
-        JButton botao = new JButton ("Hello World", icone);
-        botao.setLocation((int)(frame.getBounds().getWidth()/2) - 150, (int)(frame.getBounds().getHeight()/2 - 50));
-        botao.setVerticalTextPosition (AbstractButton.CENTER);
-        botao.setHorizontalTextPosition (AbstractButton.LEFT);
-        botao.setToolTipText ("Hello World means 'hi to the world'");
-        botao.setEnabled (true);
-        
-        painel.setBackground(Color.BLACK);
-        painel.add(botao);
-        frame.getContentPane().add(painel);
-        
-        boolean visivel = botao.isVisible();
+        boolean visivel = botao1.isVisible();
         if (visivel)
             System.out.println("Botao Visivel");
         else
