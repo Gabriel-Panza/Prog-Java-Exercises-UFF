@@ -1,8 +1,8 @@
 package Interface.LearningProcess;
 
 import javax.swing.*;
-import java.awt.*;
 import javax.swing.event.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class Calculator 

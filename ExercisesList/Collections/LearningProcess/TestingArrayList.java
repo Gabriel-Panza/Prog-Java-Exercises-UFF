@@ -1,3 +1,5 @@
+package Collections.LearningProcess;
+
 import java.util.*;
 
 public class TestingArrayList 
