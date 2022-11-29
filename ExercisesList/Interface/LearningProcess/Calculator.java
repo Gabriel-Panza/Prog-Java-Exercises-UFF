@@ -8,11 +8,11 @@ public class Calculator
 {
     public static void main(String[] args) 
     {
-        JFrame frame = new JFrame("Hello World");
+        JFrame frame = new JFrame("Calculadora");
         frame.setSize(1280,720);
 
         JPanel painel = new JPanel();
-        painel.setBackground(Color.RED);
+        painel.setBackground(Color.BLACK);
 
         JLabel labelA = new JLabel("a = ");
         JTextField numA = new JTextField(10);
