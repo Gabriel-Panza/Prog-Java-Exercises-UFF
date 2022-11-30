@@ -16,21 +16,20 @@ public class Calculator
 
         JLabel labelExpression = new JLabel("Expressão = ");
         JTextField expression = new JTextField(50);
+        
         JButton botaoCalcula = new JButton ("Calcular");
         
-        JLabel labelSoma = new JLabel("Resultado = ");
-        JLabel labelResultado = new JLabel();
-        
+        JLabel labelResposta = new JLabel("Resultado = ");
+        JLabel labelResFinal = new JLabel();
         
         class Click implements ActionListener
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-                System.out.println(RPN.evaluate(expression.toString()));
                 try{
-                    labelResultado.setText(Double.toString(RPN.evaluate(expression.toString())));
-                } catch(Exception exception){
-                    System.out.println("Invalid Expression, Try again or type '.exit' to quit");
+                    labelResFinal.setText(Double.toString(RPN.evaluate(expression.getText())));
+                } catch(Exception e){
+                    System.out.println("Invalid Expression, Try again.");
                 }
             }
         }
@@ -40,8 +39,8 @@ public class Calculator
         painel.add(labelExpression);
         painel.add(expression);
         painel.add(botaoCalcula);
-        painel.add(labelSoma);
-        painel.add(labelResultado);
+        painel.add(labelResposta);
+        painel.add(labelResFinal);
         frame.getContentPane().add(painel);
         frame.setVisible(true);
     }   
