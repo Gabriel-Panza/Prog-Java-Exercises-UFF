@@ -27,9 +27,14 @@ public class Calculator
         JButton botao7 = new JButton ("7");
         JButton botao8 = new JButton ("8");
         JButton botao9 = new JButton ("9");
-        JButton botaoPonto = new JButton (".");
         JButton botao0 = new JButton ("0");
+        
+        JButton botaoParentesesEsq = new JButton ("(");
+        JButton botaoParentesesDir = new JButton (")");
+        JButton botaoI = new JButton ("i");
+        JButton botaoPonto = new JButton (".");
         JButton botaoSpace = new JButton ("_");
+        JButton botaoApaga = new JButton ("C");
 
         JButton botaoMais = new JButton ("+");
         JButton botaoMenos = new JButton ("-");
@@ -37,10 +42,10 @@ public class Calculator
         JButton botaoDivide = new JButton ("/");
 
         JButton botaoCalcula = new JButton ("Calcular");
-        
-        JLabel labeltxtResultado = new JLabel("Resultado = ");
-        JTextField labelnumResultado = new JTextField(40);
-        labelnumResultado.setEditable(false);
+
+        JLabel labelResultado = new JLabel("Resultado = ");
+        JTextField resultado = new JTextField(40);
+        resultado.setEditable(false);
         
         JLabel espacosIniciais[] = new JLabel[4];
         for (int i=0; i<4;i++)
@@ -56,10 +61,22 @@ public class Calculator
 
         class ReadNum implements KeyListener
         {
+            char charPossiveis[] = {'1','2','3','4','5','6','7','8','9','0','+','-','*','/','i','.',' ','(',')'};
+
             /** Handle the key-typed event from the text field. */
             public void keyTyped(KeyEvent e)
             {
-                expression.setText(expression.getText() + e.getKeyChar());
+                boolean permitidos = false;
+                for (char c : charPossiveis) 
+                {
+                    if (e.getKeyChar() == c)
+                    {
+                        permitidos=true;
+                        break;
+                    }
+                }
+                if (permitidos)
+                    expression.setText(expression.getText() + e.getKeyChar());
             }
 
             /** Handle the key-pressed event from the text field. */
@@ -76,10 +93,12 @@ public class Calculator
         {
             public void actionPerformed(ActionEvent e)
             {
-                if (e.getActionCommand() != "_")
-                    expression.setText(expression.getText() + e.getActionCommand());
-                else
+                if (e.getActionCommand() == "_")
                     expression.setText(expression.getText() + " ");
+                else if (e.getActionCommand() == "C")
+                    expression.setText("");
+                else
+                    expression.setText(expression.getText() + e.getActionCommand());
             }
         }
         class ClickCalcula implements ActionListener
@@ -87,7 +106,7 @@ public class Calculator
             public void actionPerformed(ActionEvent e)
             {
                 try{
-                    labelnumResultado.setText(Double.toString(RPN.evaluate(expression.getText())));
+                    resultado.setText(Double.toString(RPN.evaluate(expression.getText())));
                 } catch(Exception exception){
                     System.out.println("Invalid Expression, Try again.");
                 }
@@ -107,12 +126,16 @@ public class Calculator
         botao7.addActionListener(new ClickNum());
         botao8.addActionListener(new ClickNum());
         botao9.addActionListener(new ClickNum());
-        botaoPonto.addActionListener(new ClickNum());
-        botaoSpace.addActionListener(new ClickNum());
         botaoMais.addActionListener(new ClickNum());
         botaoMenos.addActionListener(new ClickNum());
         botaoMultiplica.addActionListener(new ClickNum());
         botaoDivide.addActionListener(new ClickNum());
+        botaoParentesesEsq.addActionListener(new ClickNum());
+        botaoParentesesDir.addActionListener(new ClickNum());
+        botaoI.addActionListener(new ClickNum());
+        botaoPonto.addActionListener(new ClickNum());
+        botaoSpace.addActionListener(new ClickNum());
+        botaoApaga.addActionListener(new ClickNum());
         botaoCalcula.addActionListener(new ClickCalcula());
         
         painel.setLayout(new FlowLayout());
@@ -120,34 +143,38 @@ public class Calculator
         {
             painel.add(espacosIniciais[i]);
         }
-        painel.add(labeltxtResultado);
-        painel.add(labelnumResultado);
+        painel.add(labelResultado);
+        painel.add(resultado);
         painel.add(espacosDeSeparacao[0]);
         painel.add(labelExpression);
         painel.add(expression);
         painel.add(espacosDeSeparacao[1]);
+        painel.add(botaoParentesesEsq);
+        painel.add(botaoParentesesDir);
+        painel.add(botaoI);
+        painel.add(botaoApaga);
+        painel.add(espacosDeSeparacao[2]);
         painel.add(botao1);
         painel.add(botao2);
         painel.add(botao3);
         painel.add(botaoMais);
-        painel.add(espacosDeSeparacao[2]);
+        painel.add(espacosDeSeparacao[3]);
         painel.add(botao4);
         painel.add(botao5);
         painel.add(botao6);
         painel.add(botaoMenos);
-        painel.add(espacosDeSeparacao[3]);
+        painel.add(espacosDeSeparacao[4]);
         painel.add(botao7);
         painel.add(botao8);
         painel.add(botao9);
         painel.add(botaoMultiplica);
-        painel.add(espacosDeSeparacao[4]);
-        painel.add(botaoPonto);
-        painel.add(botao0);
-        painel.add(botaoSpace);
-        painel.add(botaoDivide);
         painel.add(espacosDeSeparacao[5]);
-        painel.add(botaoCalcula);
+        painel.add(botaoSpace);
+        painel.add(botao0);
+        painel.add(botaoPonto);
+        painel.add(botaoDivide);
         painel.add(espacosDeSeparacao[6]);
+        painel.add(botaoCalcula);
         
         frame.getContentPane().add(painel);
         frame.setVisible(true);
