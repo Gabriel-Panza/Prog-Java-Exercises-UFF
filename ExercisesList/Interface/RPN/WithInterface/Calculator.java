@@ -33,7 +33,7 @@ public class Calculator
         {
             espacosDeSeparacao[i] = new JLabel("                                                                                                                                                                                                                                                                                                                                                                                                                ");
         }
-        JLabel labelEspacoFim = new JLabel("                                                                                                  ");
+        JLabel labelEspacoFim = new JLabel("                                                                                                 ");
 
         class Click implements ActionListener
         {
