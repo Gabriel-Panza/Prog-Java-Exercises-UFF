@@ -14,8 +14,8 @@ public class RPN
 
         do
         {
-            int space = expr.substring(start).indexOf(' '); // Defino o que eh um espaço em branco
-            int end = space == -1 ? expr.length() : start + space; // Defino o final da minha expressao com base ou na expressao ou no começo
+            int space = expr.substring(start).indexOf(' '); // Defino o que eh um espaço
+            int end = (space == -1 ? expr.length() : start + space); // Defino o final da minha expressao com base no tamanho no espaco de cima
 
             String current = expr.substring(start,end); // numero ou operador atual
             if("+-*/".indexOf(current.charAt(0)) != -1) // Se atual eh um operador realiza as operaçoes necessarias
@@ -26,13 +26,12 @@ public class RPN
                 stack.push(operate(current.charAt(0),b,a));
             }
             else // Se atual eh um operando adiciono na pilha
-            {
                 stack.push(Double.parseDouble(current));
-            }
-            start = end + 1; // Recomeço a partir do indice depois do espaço
+
+            start = end + 1;            // Recomeço a partir de um novo inicio
         }while(start < expr.length()); // Faço isso ate a expressao terminar
 
-        double result = stack.pop(); // Retiro o unico numero que sobrou da pilha e armazeno em resultado
+        double result = stack.pop(); // Retiro o unico numero que sobrou na pilha e armazeno na avriavel resultado
 
         while(!stack.isEmpty()) // Se a pilha nao estiver vazia retorno o maior valor
         {
@@ -42,6 +41,8 @@ public class RPN
 
         return result;
     }
+
+    // Defino as operaçoes
     public static double operate(char operand,double a, double b)
     {
         Hashtable<Character,Double> opHash = new Hashtable<Character,Double>();

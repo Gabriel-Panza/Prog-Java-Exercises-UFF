@@ -9,59 +9,146 @@ public class Calculator
     public static void main(String[] args) 
     {
         JFrame frame = new JFrame("Calculadora RPN");
-        frame.setSize(1280,720);
+        frame.setSize(640,540);
 
         JPanel painel = new JPanel();
         painel.setBackground(Color.GRAY);
 
         JLabel labelExpression = new JLabel("Expressão = ");
-        JTextField expression = new JTextField(50);
-        
+        JTextField expression = new JTextField(40);
+        expression.setEditable(false);
+
+        JButton botao1 = new JButton ("1");
+        JButton botao2 = new JButton ("2");
+        JButton botao3 = new JButton ("3");
+        JButton botao4 = new JButton ("4");
+        JButton botao5 = new JButton ("5");
+        JButton botao6 = new JButton ("6");
+        JButton botao7 = new JButton ("7");
+        JButton botao8 = new JButton ("8");
+        JButton botao9 = new JButton ("9");
+        JButton botaoPonto = new JButton (".");
+        JButton botao0 = new JButton ("0");
+        JButton botaoSpace = new JButton ("_");
+
+        JButton botaoMais = new JButton ("+");
+        JButton botaoMenos = new JButton ("-");
+        JButton botaoMultiplica = new JButton ("*");
+        JButton botaoDivide = new JButton ("/");
+
         JButton botaoCalcula = new JButton ("Calcular");
         
-        JLabel labelResposta = new JLabel("Resultado = ");
-        JLabel labelResFinal = new JLabel();
+        JLabel labeltxtResultado = new JLabel("Resultado = ");
+        JTextField labelnumResultado = new JTextField(40);
+        labelnumResultado.setEditable(false);
         
-        JLabel espacosIniciais[] = new JLabel[10];
-        for (int i=0; i<10;i++)
+        JLabel espacosIniciais[] = new JLabel[4];
+        for (int i=0; i<4;i++)
         {
             espacosIniciais[i] = new JLabel("                                                                                                                                                                                                                                                                                                                                                                                                                ");
 
         }
-        JLabel espacosDeSeparacao[] = new JLabel[3];
-        for (int i=0; i<3;i++)
+        JLabel espacosDeSeparacao[] = new JLabel[7];
+        for (int i=0; i<7;i++)
         {
             espacosDeSeparacao[i] = new JLabel("                                                                                                                                                                                                                                                                                                                                                                                                                ");
         }
-        JLabel labelEspacoFim = new JLabel("                                                                                                 ");
 
-        class Click implements ActionListener
+        class ReadNum implements KeyListener
         {
-            public void actionPerformed(ActionEvent actionEvent)
+            /** Handle the key-typed event from the text field. */
+            public void keyTyped(KeyEvent e)
+            {
+                expression.setText(expression.getText() + e.getKeyChar());
+            }
+
+            /** Handle the key-pressed event from the text field. */
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+        
+            /** Handle the key-released event from the text field. */
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }    
+        }
+        class ClickNum implements ActionListener
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                if (e.getActionCommand() != "_")
+                    expression.setText(expression.getText() + e.getActionCommand());
+                else
+                    expression.setText(expression.getText() + " ");
+            }
+        }
+        class ClickCalcula implements ActionListener
+        {
+            public void actionPerformed(ActionEvent e)
             {
                 try{
-                    labelResFinal.setText(Double.toString(RPN.evaluate(expression.getText())));
-                } catch(Exception e){
+                    labelnumResultado.setText(Double.toString(RPN.evaluate(expression.getText())));
+                } catch(Exception exception){
                     System.out.println("Invalid Expression, Try again.");
                 }
             }
         }
-        botaoCalcula.addActionListener(new Click());
+        
+        // Aplico funçoes para os meus componentes
+        expression.addKeyListener(new ReadNum());
+
+        botao0.addActionListener(new ClickNum());
+        botao1.addActionListener(new ClickNum());
+        botao2.addActionListener(new ClickNum());
+        botao3.addActionListener(new ClickNum());
+        botao4.addActionListener(new ClickNum());
+        botao5.addActionListener(new ClickNum());
+        botao6.addActionListener(new ClickNum());
+        botao7.addActionListener(new ClickNum());
+        botao8.addActionListener(new ClickNum());
+        botao9.addActionListener(new ClickNum());
+        botaoPonto.addActionListener(new ClickNum());
+        botaoSpace.addActionListener(new ClickNum());
+        botaoMais.addActionListener(new ClickNum());
+        botaoMenos.addActionListener(new ClickNum());
+        botaoMultiplica.addActionListener(new ClickNum());
+        botaoDivide.addActionListener(new ClickNum());
+        botaoCalcula.addActionListener(new ClickCalcula());
         
         painel.setLayout(new FlowLayout());
-        for (int i=0;i<10;i++)
+        for (int i=0;i<4;i++)
         {
             painel.add(espacosIniciais[i]);
         }
+        painel.add(labeltxtResultado);
+        painel.add(labelnumResultado);
         painel.add(espacosDeSeparacao[0]);
         painel.add(labelExpression);
         painel.add(expression);
         painel.add(espacosDeSeparacao[1]);
-        painel.add(botaoCalcula);
+        painel.add(botao1);
+        painel.add(botao2);
+        painel.add(botao3);
+        painel.add(botaoMais);
         painel.add(espacosDeSeparacao[2]);
-        painel.add(labelResposta);
-        painel.add(labelResFinal);
-        painel.add(labelEspacoFim);
+        painel.add(botao4);
+        painel.add(botao5);
+        painel.add(botao6);
+        painel.add(botaoMenos);
+        painel.add(espacosDeSeparacao[3]);
+        painel.add(botao7);
+        painel.add(botao8);
+        painel.add(botao9);
+        painel.add(botaoMultiplica);
+        painel.add(espacosDeSeparacao[4]);
+        painel.add(botaoPonto);
+        painel.add(botao0);
+        painel.add(botaoSpace);
+        painel.add(botaoDivide);
+        painel.add(espacosDeSeparacao[5]);
+        painel.add(botaoCalcula);
+        painel.add(espacosDeSeparacao[6]);
+        
         frame.getContentPane().add(painel);
         frame.setVisible(true);
     }   
