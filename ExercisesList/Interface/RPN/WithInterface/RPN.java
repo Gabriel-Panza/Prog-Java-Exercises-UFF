@@ -18,7 +18,8 @@ public class RPN
             int end = space == -1 ? expr.length() : start + space;
             String current = expr.substring(start,end);//current number or operator
             if("+-*/".indexOf(current.charAt(0)) != -1)//check if current is operator
-            {//pop 2 and apply operation
+            {
+                //pop 2 and apply operation
                 Double a = stack.pop();
                 Double b = stack.pop();
                 stack.push(operate(current.charAt(0),b,a));
