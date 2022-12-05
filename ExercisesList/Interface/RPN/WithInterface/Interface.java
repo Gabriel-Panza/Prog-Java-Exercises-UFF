@@ -4,19 +4,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Calculator 
+public class Interface extends RPN
 {
-    public static void main(String[] args) 
+    public Interface()
     {
         JFrame frame = new JFrame("Calculadora RPN");
-        frame.setSize(640,540);
+        frame.setSize(640,640);
 
         JPanel painel = new JPanel();
         painel.setBackground(Color.GRAY);
 
+        // Guarda a expressao que sera utilizada para o calculo
         JLabel labelExpression = new JLabel("Expressão = ");
         JTextField expression = new JTextField(40);
         expression.setEditable(false);
+
+        // Guarda as expressoes calculadas anteriormente
+        JLabel labelPreviousExpression = new JLabel("Histórico = ");
+        JTextField previousExpression = new JTextField(40);
+        previousExpression.setEditable(false);
 
         JButton botao1 = new JButton ("1");
         JButton botao2 = new JButton ("2");
@@ -29,13 +35,12 @@ public class Calculator
         JButton botao9 = new JButton ("9");
         JButton botao0 = new JButton ("0");
         
-        JButton botaoParentesesEsq = new JButton ("(");
-        JButton botaoParentesesDir = new JButton (")");
         JButton botaoI = new JButton ("i");
         JButton botaoPonto = new JButton (".");
-        JButton botaoSpace = new JButton ("_");
-        JButton botaoApaga = new JButton ("C");
 
+        JButton botaoSpace = new JButton ("       _       ");
+        JButton botaoApaga = new JButton ("       C       ");
+        
         JButton botaoMais = new JButton ("+");
         JButton botaoMenos = new JButton ("-");
         JButton botaoMultiplica = new JButton ("*");
@@ -53,8 +58,8 @@ public class Calculator
             espacosIniciais[i] = new JLabel("                                                                                                                                                                                                                                                                                                                                                                                                                ");
 
         }
-        JLabel espacosDeSeparacao[] = new JLabel[7];
-        for (int i=0; i<7;i++)
+        JLabel espacosDeSeparacao[] = new JLabel[8];
+        for (int i=0; i<8;i++)
         {
             espacosDeSeparacao[i] = new JLabel("                                                                                                                                                                                                                                                                                                                                                                                                                ");
         }
@@ -83,7 +88,6 @@ public class Calculator
             @Override
             public void keyPressed(KeyEvent e) {
             }
-        
             /** Handle the key-released event from the text field. */
             @Override
             public void keyReleased(KeyEvent e) {
@@ -93,9 +97,9 @@ public class Calculator
         {
             public void actionPerformed(ActionEvent e)
             {
-                if (e.getActionCommand() == "_")
+                if (e.getActionCommand() == "       _       ")
                     expression.setText(expression.getText() + " ");
-                else if (e.getActionCommand() == "C")
+                else if (e.getActionCommand() == "       C       ")
                     expression.setText("");
                 else
                     expression.setText(expression.getText() + e.getActionCommand());
@@ -106,16 +110,18 @@ public class Calculator
             public void actionPerformed(ActionEvent e)
             {
                 try{
-                    resultado.setText(Double.toString(RPN.evaluate(expression.getText())));
+                    resultado.setText(Double.toString(evaluate(expression.getText())));
                 } catch(Exception exception){
                     System.out.println("Invalid Expression, Try again.");
+                } finally{
+                    previousExpression.setText(previousExpression.getText() + expression.getText() + " = " + resultado.getText() + "   ");
+                    expression.setText("");
                 }
             }
         }
         
         // Aplico funçoes para os meus componentes
         expression.addKeyListener(new ReadNum());
-
         botao0.addActionListener(new ClickNum());
         botao1.addActionListener(new ClickNum());
         botao2.addActionListener(new ClickNum());
@@ -130,8 +136,6 @@ public class Calculator
         botaoMenos.addActionListener(new ClickNum());
         botaoMultiplica.addActionListener(new ClickNum());
         botaoDivide.addActionListener(new ClickNum());
-        botaoParentesesEsq.addActionListener(new ClickNum());
-        botaoParentesesDir.addActionListener(new ClickNum());
         botaoI.addActionListener(new ClickNum());
         botaoPonto.addActionListener(new ClickNum());
         botaoSpace.addActionListener(new ClickNum());
@@ -149,31 +153,32 @@ public class Calculator
         painel.add(labelExpression);
         painel.add(expression);
         painel.add(espacosDeSeparacao[1]);
-        painel.add(botaoParentesesEsq);
-        painel.add(botaoParentesesDir);
-        painel.add(botaoI);
-        painel.add(botaoApaga);
+        painel.add(labelPreviousExpression);
+        painel.add(previousExpression);
         painel.add(espacosDeSeparacao[2]);
+        painel.add(botaoSpace);
+        painel.add(botaoApaga);
+        painel.add(espacosDeSeparacao[3]);
         painel.add(botao1);
         painel.add(botao2);
         painel.add(botao3);
         painel.add(botaoMais);
-        painel.add(espacosDeSeparacao[3]);
+        painel.add(espacosDeSeparacao[4]);
         painel.add(botao4);
         painel.add(botao5);
         painel.add(botao6);
         painel.add(botaoMenos);
-        painel.add(espacosDeSeparacao[4]);
+        painel.add(espacosDeSeparacao[5]);
         painel.add(botao7);
         painel.add(botao8);
         painel.add(botao9);
         painel.add(botaoMultiplica);
-        painel.add(espacosDeSeparacao[5]);
-        painel.add(botaoSpace);
+        painel.add(espacosDeSeparacao[6]);
+        painel.add(botaoI);
         painel.add(botao0);
         painel.add(botaoPonto);
         painel.add(botaoDivide);
-        painel.add(espacosDeSeparacao[6]);
+        painel.add(espacosDeSeparacao[7]);
         painel.add(botaoCalcula);
         
         frame.getContentPane().add(painel);
