@@ -114,8 +114,8 @@ public class Interface extends RPN
                 } catch(Exception exception){
                     System.out.println("Invalid Expression, Try again.");
                 } finally{
-                    previousExpression.setText(previousExpression.getText() + expression.getText() + " = " + resultado.getText() + "   ");
-                    expression.setText("");
+                    previousExpression.setText(previousExpression.getText() + expression.getText() + "   ");
+                    expression.setText(resultado.getText());
                 }
             }
         }

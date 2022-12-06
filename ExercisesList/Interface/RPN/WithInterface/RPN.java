@@ -22,9 +22,15 @@ public class RPN
         if (expr.isEmpty()) 
             return 0;
 
+        // Defino o inicio da string
         int start = 0;
-        Stack<Double> stack = new Stack<>(); // Crio minha pilha de doubles
 
+        // Crio minha pilha de doubles
+        Stack<Double> pilha = new Stack<>();
+
+        // Defino uma variavel booleana para avaliar se tem numero imaginario no meio ou nao
+        Boolean imaginario = false;
+        
         do
         {
             // Defino onde esta o espaco
@@ -44,16 +50,24 @@ public class RPN
             if("+-*/".indexOf(current.charAt(0)) != -1)
             {
                 //Removo dois da pilha e aplico a operaçao
-                Double a = stack.pop();
-                Double b = stack.pop();
-                stack.push(operate(current.charAt(0),b,a));
+                Double a = pilha.pop();
+                Double b = pilha.pop();
+                pilha.push(operate(current.charAt(0),b,a));
             }
             // Se atual eh um operando adiciono na pilha
             else
             {
-                if (current.charAt(end) == 'i')
-                    current.replace(current.charAt(end), (char)Math.sqrt(-1));
-                stack.push(Double.parseDouble(current));
+                for (int i=0; i<current.length();i++)
+                {
+                    if (current.charAt(i)== 'i')
+                    {
+                        imaginario = true;
+                        current.replace("i", "");
+                    }
+                }
+                // Se a substring era composta apenas do i, o length da substring vai virar 0, e logo nao preciso adicionar nada na pilha
+                if (current.length()>0)
+                    pilha.push(Double.parseDouble(current));
             }
 
             // Recomeço a partir do proximo numero ou operador
@@ -61,17 +75,20 @@ public class RPN
         }while(start < expr.length()); // Faço isso ate a expressao terminar
 
         // Retiro o unico numero que sobrou na pilha e armazeno na variavel resultado
-        double result = stack.pop();
+        double result = pilha.pop();
 
         // Se a pilha nao estiver vazia retorno o maior valor
-        while(!stack.isEmpty())
+        while(!pilha.isEmpty())
         {
-            double current = stack.pop();
+            double current = pilha.pop();
             if (current > result)
                 result = current;
         }
 
         // Retorno o resultado
-        return result;
+        if (imaginario == true)
+            return result + 'i';
+        else
+            return result;
     }
 }
