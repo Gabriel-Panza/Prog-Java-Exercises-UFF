@@ -17,16 +17,18 @@ public class RPN
         return opHash.get(operand);
     }
     
-    public static double evaluate(String expr) 
+    public static String evaluate(String expr) 
     {
         if (expr.isEmpty()) 
-            return 0;
+            return "0";
 
         // Defino o inicio da string
         int start = 0;
 
         // Crio minha pilha de doubles
         Stack<Double> pilha = new Stack<>();
+        // Crio minha pilha de strings para os numeros imaginarios
+        Stack<String> pilhaString = new Stack<>();
 
         // Defino uma variavel booleana para avaliar se tem numero imaginario no meio ou nao
         Boolean imaginario = false;
@@ -50,9 +52,12 @@ public class RPN
             if("+-*/".indexOf(current.charAt(0)) != -1)
             {
                 //Removo dois da pilha e aplico a operaçao
-                Double a = pilha.pop();
-                Double b = pilha.pop();
-                pilha.push(operate(current.charAt(0),b,a));
+                if (pilha.capacity()>=2)
+                {
+                    Double a = pilha.pop();
+                    Double b = pilha.pop();
+                    pilha.push(operate(current.charAt(0),b,a));
+                }
             }
             // Se atual eh um operando adiciono na pilha
             else
@@ -62,11 +67,15 @@ public class RPN
                     if (current.charAt(i)== 'i')
                     {
                         imaginario = true;
-                        current.replace("i", "");
+                        break;
                     }
+                    else
+                        imaginario = false;
                 }
                 // Se a substring era composta apenas do i, o length da substring vai virar 0, e logo nao preciso adicionar nada na pilha
-                if (current.length()>0)
+                if (imaginario)
+                    pilhaString.push(current);
+                else
                     pilha.push(Double.parseDouble(current));
             }
 
@@ -74,10 +83,10 @@ public class RPN
             start = end + 1;
         }while(start < expr.length()); // Faço isso ate a expressao terminar
 
-        // Retiro o unico numero que sobrou na pilha e armazeno na variavel resultado
+        // Retiro o unico numero que sobrou na pilha e armazeno na variavel result
         double result = pilha.pop();
 
-        // Se a pilha nao estiver vazia retorno o maior valor
+        // Se a pilha nao estiver vazia, ou seja tive mais operandos(numeros) do que operadores(sinais), retorno o maior valor
         while(!pilha.isEmpty())
         {
             double current = pilha.pop();
@@ -86,9 +95,9 @@ public class RPN
         }
 
         // Retorno o resultado
-        if (imaginario == true)
-            return result + 'i';
+        if (pilhaString.isEmpty())
+            return String.valueOf(result);
         else
-            return result;
+            return String.valueOf(result) + "i";
     }
 }

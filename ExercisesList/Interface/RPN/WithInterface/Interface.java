@@ -47,10 +47,6 @@ public class Interface extends RPN
         JButton botaoDivide = new JButton ("/");
 
         JButton botaoCalcula = new JButton ("Calcular");
-
-        JLabel labelResultado = new JLabel("Resultado = ");
-        JTextField resultado = new JTextField(40);
-        resultado.setEditable(false);
         
         JLabel espacosIniciais[] = new JLabel[4];
         for (int i=0; i<4;i++)
@@ -58,8 +54,8 @@ public class Interface extends RPN
             espacosIniciais[i] = new JLabel("                                                                                                                                                                                                                                                                                                                                                                                                                ");
 
         }
-        JLabel espacosDeSeparacao[] = new JLabel[8];
-        for (int i=0; i<8;i++)
+        JLabel espacosDeSeparacao[] = new JLabel[7];
+        for (int i=0; i<7;i++)
         {
             espacosDeSeparacao[i] = new JLabel("                                                                                                                                                                                                                                                                                                                                                                                                                ");
         }
@@ -110,12 +106,12 @@ public class Interface extends RPN
             public void actionPerformed(ActionEvent e)
             {
                 try{
-                    resultado.setText(Double.toString(evaluate(expression.getText())));
+                    previousExpression.setText(previousExpression.getText() + expression.getText());
+                    expression.setText(evaluate(expression.getText()));
                 } catch(Exception exception){
                     System.out.println("Invalid Expression, Try again.");
                 } finally{
-                    previousExpression.setText(previousExpression.getText() + expression.getText() + "   ");
-                    expression.setText(resultado.getText());
+                    previousExpression.setText(previousExpression.getText() + " = " + expression.getText() + " ... ");
                 }
             }
         }
@@ -147,38 +143,35 @@ public class Interface extends RPN
         {
             painel.add(espacosIniciais[i]);
         }
-        painel.add(labelResultado);
-        painel.add(resultado);
-        painel.add(espacosDeSeparacao[0]);
         painel.add(labelExpression);
         painel.add(expression);
-        painel.add(espacosDeSeparacao[1]);
+        painel.add(espacosDeSeparacao[0]);
         painel.add(labelPreviousExpression);
         painel.add(previousExpression);
-        painel.add(espacosDeSeparacao[2]);
+        painel.add(espacosDeSeparacao[1]);
         painel.add(botaoSpace);
         painel.add(botaoApaga);
-        painel.add(espacosDeSeparacao[3]);
+        painel.add(espacosDeSeparacao[2]);
         painel.add(botao1);
         painel.add(botao2);
         painel.add(botao3);
         painel.add(botaoMais);
-        painel.add(espacosDeSeparacao[4]);
+        painel.add(espacosDeSeparacao[3]);
         painel.add(botao4);
         painel.add(botao5);
         painel.add(botao6);
         painel.add(botaoMenos);
-        painel.add(espacosDeSeparacao[5]);
+        painel.add(espacosDeSeparacao[4]);
         painel.add(botao7);
         painel.add(botao8);
         painel.add(botao9);
         painel.add(botaoMultiplica);
-        painel.add(espacosDeSeparacao[6]);
+        painel.add(espacosDeSeparacao[5]);
         painel.add(botaoI);
         painel.add(botao0);
         painel.add(botaoPonto);
         painel.add(botaoDivide);
-        painel.add(espacosDeSeparacao[7]);
+        painel.add(espacosDeSeparacao[6]);
         painel.add(botaoCalcula);
         
         frame.getContentPane().add(painel);
