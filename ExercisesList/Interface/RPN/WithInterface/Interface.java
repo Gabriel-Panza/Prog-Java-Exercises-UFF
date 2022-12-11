@@ -9,8 +9,10 @@ public class Interface extends RPN
     public Interface()
     {
         JFrame frame = new JFrame("Calculadora RPN");
+        frame.setResizable(false);
+        frame.setLocation(450, 120);
         frame.setSize(640,640);
-
+        
         JPanel painel = new JPanel();
         painel.setBackground(Color.GRAY);
 
@@ -109,7 +111,7 @@ public class Interface extends RPN
                     previousExpression.setText(previousExpression.getText() + expression.getText());
                     expression.setText(evaluate(expression.getText()));
                 } catch(Exception exception){
-                    System.out.println("Invalid Expression, Try again.");
+                    System.out.println("Complex expression found!");
                 } finally{
                     previousExpression.setText(previousExpression.getText() + " = " + expression.getText() + " ... ");
                 }
