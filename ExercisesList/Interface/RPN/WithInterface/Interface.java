@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Interface extends RPN
+public class Interface extends Calculadora
 {
     public Interface()
     {
@@ -38,8 +38,10 @@ public class Interface extends RPN
         JButton botao0 = new JButton ("0");
         JButton botaoI = new JButton ("i");
         JButton botaoPonto = new JButton (".");
-        JButton botaoSpace = new JButton ("       _       ");
-        JButton botaoApaga = new JButton ("       C       ");
+        JButton botaoParentesesEsq = new JButton ("(");
+        JButton botaoParentesesDir = new JButton (")");
+        JButton botaoSpace = new JButton ("_");
+        JButton botaoApaga = new JButton ("C");
         JButton botaoMais = new JButton ("+");
         JButton botaoMenos = new JButton ("-");
         JButton botaoMultiplica = new JButton ("*");
@@ -52,8 +54,7 @@ public class Interface extends RPN
             espacosDeSeparacao[i] = new JLabel("                                                                                                                                                                                      ");
         }
 
-        class ReadNum implements KeyListener
-        {
+        class ReadNum implements KeyListener{
             char charPossiveis[] = {'1','2','3','4','5','6','7','8','9','0','+','-','*','/','i','.',' ','(',')'};
 
             /** Handle the key-typed event from the text field. */
@@ -81,27 +82,26 @@ public class Interface extends RPN
             public void keyReleased(KeyEvent e) {
             }    
         }
-        class ClickNum implements ActionListener
-        {
+        class ClickNum implements ActionListener{
             public void actionPerformed(ActionEvent e)
             {
-                if (e.getActionCommand() == "       _       ")
+                if (e.getActionCommand() == "_")
                     expression.setText(expression.getText() + " ");
-                else if (e.getActionCommand() == "       C       ")
+                else if (e.getActionCommand() == "C")
                     expression.setText("");
                 else
                     expression.setText(expression.getText() + e.getActionCommand());
             }
         }
-        class ClickCalcula implements ActionListener
-        {
+        class ClickCalcula implements ActionListener{
             public void actionPerformed(ActionEvent e)
             {
+                // Defino o termo q vai ficar no historico
+                previousExpression.setText(previousExpression.getText() + expression.getText());
                 try{
-                    previousExpression.setText(previousExpression.getText() + expression.getText());
-                    expression.setText(evaluate(expression.getText()));
+                    expression.setText(calc(expression.getText()));
                 } catch(Exception exception){
-                    System.out.println("Complex expression found!");
+                    System.out.println("Invalid Expression! Try again...");
                 } finally{
                     previousExpression.setText(previousExpression.getText() + " = " + expression.getText() + " ... ");
                 }
@@ -126,6 +126,8 @@ public class Interface extends RPN
         botaoDivide.addActionListener(new ClickNum());
         botaoI.addActionListener(new ClickNum());
         botaoPonto.addActionListener(new ClickNum());
+        botaoParentesesEsq.addActionListener(new ClickNum());
+        botaoParentesesDir.addActionListener(new ClickNum());
         botaoSpace.addActionListener(new ClickNum());
         botaoApaga.addActionListener(new ClickNum());
         botaoCalcula.addActionListener(new ClickCalcula());
@@ -141,6 +143,8 @@ public class Interface extends RPN
         painel.add(labelPreviousExpression);
         painel.add(previousExpression);
         painel.add(espacosDeSeparacao[5]);
+        painel.add(botaoParentesesEsq);
+        painel.add(botaoParentesesDir);
         painel.add(botaoSpace);
         painel.add(botaoApaga);
         painel.add(espacosDeSeparacao[6]);
