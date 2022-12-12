@@ -17,7 +17,7 @@ public class RPN
         return opHash.get(operand);
     }
     
-    public static String evaluate(String expr) 
+    public static String evaluate(String expr) throws Exception
     {
         if (expr.isEmpty()) 
             return "0";
@@ -29,12 +29,14 @@ public class RPN
         Stack<Double> pilha = new Stack<>();
         // Crio minha pilha de strings para os numeros imaginarios
         Stack<String> pilhaString = new Stack<>();
+        // Crio minha variavel que vai armazenar o numero imaginario caso haja algum
+        String resultString = "";
 
-        // Defino uma variavel booleana para avaliar se tem numero imaginario no meio ou nao
-        Boolean imaginario = false;
-        
         do
         {
+            // Defino uma variavel booleana para avaliar se tem numero imaginario no meio ou nao
+            Boolean imaginario = false;
+
             // Defino onde esta o espaco
             int space = expr.substring(start).indexOf(' ');
             
@@ -69,8 +71,6 @@ public class RPN
                         imaginario = true;
                         break;
                     }
-                    else
-                        imaginario = false;
                 }
                 // Se a substring era composta apenas do i, o length da substring vai virar 0, e logo nao preciso adicionar nada na pilha
                 if (imaginario)
@@ -85,8 +85,11 @@ public class RPN
 
         // Retiro o unico numero que sobrou na pilha e armazeno na variavel result
         double result = pilha.pop();
+        
+        if (!pilhaString.empty())
+            resultString = pilhaString.pop();
 
-        // Se a pilha nao estiver vazia, ou seja tive mais operandos(numeros) do que operadores(sinais), retorno o maior valor
+        // Se a pilha nao estiver vazia, ou seja, tive mais operações do que operadores(sinais), retorno o maior valor
         while(!pilha.isEmpty())
         {
             double current = pilha.pop();
@@ -98,6 +101,6 @@ public class RPN
         if (pilhaString.isEmpty())
             return String.valueOf(result);
         else
-            return String.valueOf(result) + "i";
+            return String.valueOf(result) + resultString;
     }
 }
