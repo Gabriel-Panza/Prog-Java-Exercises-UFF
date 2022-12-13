@@ -2,7 +2,7 @@ package Interface.RPN.WithoutInterface;
 
 import java.util.Scanner;
 
-public class Calculator 
+public class Main 
 {
     public static void main(String[] args) 
     {
@@ -17,7 +17,7 @@ public class Calculator
             System.out.print("-> ");
             inp = teclado.nextLine();
             try{
-                System.out.println(RPN.evaluate(inp));
+                System.out.println(CalculadoraRPN.evaluate(inp));
             } catch(Exception e){
                 System.out.println("Invalid Expression, Try again or type '.exit' to quit");
             }
