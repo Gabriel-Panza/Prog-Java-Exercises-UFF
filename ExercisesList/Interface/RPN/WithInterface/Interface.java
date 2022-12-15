@@ -8,11 +8,16 @@ public class Interface extends Calculadora
 {
     public Interface()
     {
+        // Cria a janela com um nome e aplico funcionalidades extras nela
         JFrame frame = new JFrame("Calculadora RPN");
+        // Tiro a funçao de maximizar (redimensionar) da janela
         frame.setResizable(false);
+        // Posiciono a janela na tela
         frame.setLocation(450, 120);
+        // Escolho a largura e altura da janela
         frame.setSize(640,600);
         
+        // Crio o painel responsavel por guardar os botoes e textos da minha janela
         JPanel painel = new JPanel();
         painel.setBackground(Color.GRAY);
 
@@ -26,6 +31,7 @@ public class Interface extends Calculadora
         JTextField previousExpression = new JTextField(40);
         previousExpression.setEditable(false);
 
+        // Crio os botoes
         JButton botao1 = new JButton ("1");
         JButton botao2 = new JButton ("2");
         JButton botao3 = new JButton ("3");
@@ -48,6 +54,7 @@ public class Interface extends Calculadora
         JButton botaoDivide = new JButton ("/");
         JButton botaoCalcula = new JButton ("Calcular");
 
+        // Crio as quebras de linha
         JLabel espacosDeSeparacao[] = new JLabel[11];
         for (int i=0; i<11;i++)
         {
@@ -132,6 +139,7 @@ public class Interface extends Calculadora
         botaoApaga.addActionListener(new ClickNum());
         botaoCalcula.addActionListener(new ClickCalcula());
         
+        // Defino um layout e adiciono os botoes no painel
         painel.setLayout(new FlowLayout());
         for (int i=0;i<4;i++)
         {
@@ -170,7 +178,9 @@ public class Interface extends Calculadora
         painel.add(espacosDeSeparacao[10]);
         painel.add(botaoCalcula);
         
+        // Adiciono o painel na janela
         frame.getContentPane().add(painel);
+        // Torno a janela visivel pro usuario
         frame.setVisible(true);
     }   
 }
