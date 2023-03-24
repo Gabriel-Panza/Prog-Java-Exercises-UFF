@@ -7,39 +7,39 @@ public class TestingArrayList
     public static void main(String[] args) 
     {
         int cont=0;
-        String aula1 = "Knowing more about lists";
-        String aula2 = "Learning more about Class Aula";
-        String aula3 = "Working with Courses e Sets";
+        String class1 = "Knowing more about lists";
+        String class2 = "Learning more about Class Aula";
+        String class3 = "Working with Courses e Sets";
 
-        ArrayList<String> aulas = new ArrayList<>();
-        aulas.add(aula1);
-        aulas.add(aula2);
-        aulas.add(aula3);
+        ArrayList<String> classes = new ArrayList<>();
+        classes.add(class1);
+        classes.add(class2);
+        classes.add(class3);
 
-        System.out.println(aulas);
+        System.out.println(classes);
         
-        for (String aula : aulas) 
+        for (String c : classes) 
         {
-            System.out.println("Aula " + ++cont + ": " + aula);
+            System.out.println("Class " + ++cont + ": " + c);
         }
         System.out.println("\n");
-        for (int i=0; i<aulas.size(); i++)
+        for (int i=0; i<classes.size(); i++)
         {
-            System.out.println("Aula " + (i+1) + ": " + aulas.get(i));
+            System.out.println("Class " + (i+1) + ": " + classes.get(i));
         }
-        System.out.println("\nPercorrendo:");
-        aulas.forEach(aula -> {
+        System.out.println("\nReading:");
+        classes.forEach(aula -> {
             System.out.println(aula);
         });
 
-        String aulaRemovida = aulas.get(1);
-        aulas.remove(aula2);
+        String classRemoved = classes.get(1);
+        classes.remove(class2);
 
-        System.out.println("\n" + aulas);
-        System.out.println("A aula removida foi: " + aulaRemovida);
+        System.out.println("\n" + classes);
+        System.out.println("A aula removida foi: " + classRemoved);
 
-        aulas.add("Increasing our knowledge");
-        Collections.sort(aulas);
-        System.out.println("\n" + aulas);
+        classes.add("Increasing our knowledge");
+        Collections.sort(classes);
+        System.out.println("\n" + classes);
     }    
 }

@@ -3,29 +3,27 @@ public class TypesOfCar
 {
     public static void main(String[] args)
     {
-        Carro fusca = new Carro(10);
-        Carro bmw = new Carro(15);
-        fusca.freia();
-        bmw.acelera();
+        Car ferrari = new Car(10);
+        Car bmw = new Car(15);
+        ferrari.disaccelerate();
+        bmw.accelerate();
 
-        // Ao printar o objeto, printa-se o endereço da Classe
-        System.out.println(fusca);
+        System.out.println(ferrari);
         System.out.println(bmw);
 
-        // Igualamos o endereço do fusca ao do bmw, sobrescrevendo seus atributos
-        fusca = bmw;
+        ferrari = bmw;
 
-        if (fusca.getVelocidade()<bmw.getVelocidade())
+        if (ferrari.getVelocity()<bmw.getVelocity())
         {
-            System.out.println("O fusca eh mais lento que uma bmw");
+            System.out.println("Ferrari is slower than bmw");
         }
-        else if(fusca.getVelocidade()>bmw.getVelocidade())
+        else if(ferrari.getVelocity()>bmw.getVelocity())
         {
-            System.out.println("O fusca eh mais rapido que uma bmw");
+            System.out.println("Ferrari is faster than bmw");
         }
         else
         {
-            System.out.println("O fusca tem a mesma velocidade que uma bmw");
+            System.out.println("Ferrari has the same speed as bmw");
         }
     }        
 }

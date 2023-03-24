@@ -1,5 +1,3 @@
-package Interface.LearningProcess;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,30 +14,30 @@ public class HelloWorld
         // Container container = frame.getContentPane();
         // container.setLayout(new BorderLayout());;
         
-        JButton botao1 = new JButton ("Hello World");
-        JButton botao2 = new JButton ("Hi World");
+        JButton button1 = new JButton ("Hello World");
+        JButton button2 = new JButton ("Hi World");
 
-        botao1.setVerticalTextPosition (AbstractButton.CENTER);
-        botao1.setHorizontalTextPosition (AbstractButton.LEFT);
-        botao1.setToolTipText ("Hello World means 'hi to the world'");
-        botao1.setEnabled (true);
+        button1.setVerticalTextPosition (AbstractButton.CENTER);
+        button1.setHorizontalTextPosition (AbstractButton.LEFT);
+        button1.setToolTipText ("Hello World means 'hi to the world'");
+        button1.setEnabled (true);
 
-        botao2.setVerticalTextPosition (AbstractButton.CENTER);
-        botao2.setHorizontalTextPosition (AbstractButton.LEFT);
-        botao2.setToolTipText ("Hello World means 'hi to the world'");
-        botao2.setEnabled (true);
+        button2.setVerticalTextPosition (AbstractButton.CENTER);
+        button2.setHorizontalTextPosition (AbstractButton.LEFT);
+        button2.setToolTipText ("Hello World means 'hi to the world'");
+        button2.setEnabled (true);
         
         painel.setLayout(new FlowLayout());
-        painel.add(botao1);
-        painel.add(botao2);
+        painel.add(button1);
+        painel.add(button2);
         frame.getContentPane().add(painel);
 
         frame.setVisible(true);    
         
-        boolean visivel = botao1.isVisible();
+        boolean visivel = button1.isVisible();
         if (visivel)
-            System.out.println("Botao Visivel");
+            System.out.println("Visible Button");
         else
-            System.out.println("Botao Invisivel");
+            System.out.println("Invisible Button");
     }
 }

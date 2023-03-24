@@ -5,30 +5,30 @@ public class NotasFixas
 {
     public static void main(String[] args) 
     {
-        Scanner teclado = new Scanner(System.in);
-        String nome1, nome2, nome3;
-        float nota1, nota2, nota3, media;
+        Scanner keyword = new Scanner(System.in);
+        String name1, name2, name3;
+        float grade1, grade2, grade3, media;
 
-        System.out.print("Informe o nome do aluno 1: ");
-        nome1 = teclado.nextLine();
-        System.out.print("Informe o nome do aluno 2: ");
-        nome2 = teclado.nextLine();
-        System.out.print("Informe o nome do aluno 3: ");
-        nome3 = teclado.nextLine();
-        System.out.print("Informe a nota de " + nome1 + ": ");
-        nota1 = teclado.nextFloat();
-        System.out.print("Informe a nota de " + nome2 + ": ");
-        nota2 = teclado.nextFloat();
-        System.out.print("Informe a nota de " + nome3 + ": ");
-        nota3 = teclado.nextFloat();
-        media = (nota1 + nota2 + nota3)/3;
+        System.out.print("Type the name of the student 1: ");
+        name1 = keyword.nextLine();
+        System.out.print("Type the name of the student 2: ");
+        name2 = keyword.nextLine();
+        System.out.print("Type the name of the student 3: ");
+        name3 = keyword.nextLine();
+        System.out.print("Type the grade of " + name1 + ": ");
+        grade1 = keyword.nextFloat();
+        System.out.print("Type the grade of " + name2 + ": ");
+        grade2 = keyword.nextFloat();
+        System.out.print("Type the grade of " + name3 + ": ");
+        grade3 = keyword.nextFloat();
+        media = (grade1 + grade2 + grade3)/3;
 
-        if (nota1 > media)
-            System.out.println("Parabéns " + nome1);
-        if (nota2 > media)
-            System.out.println("Parabéns " + nome2);
-        if (nota3 > media)
-            System.out.println("Parabéns " + nome3);
-        teclado.close();
+        if (grade1 > media)
+            System.out.println("Congratulations " + name1);
+        if (grade2 > media)
+            System.out.println("Congratulations " + name2);
+        if (grade3 > media)
+            System.out.println("Congratulations " + name3);
+        keyword.close();
     }
 }

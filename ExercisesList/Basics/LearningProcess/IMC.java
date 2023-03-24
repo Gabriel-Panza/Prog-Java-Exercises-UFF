@@ -3,20 +3,20 @@ import java.util.Scanner;
 
 public class IMC 
 {
-    public static double info(Scanner teclado, String mensagem) 
+    public static double info(Scanner keyword, String message) 
     {
-        System.out.print(mensagem);
-        return teclado.nextDouble();
+        System.out.print(message);
+        return keyword.nextDouble();
     }
     public static void main(String[] args) 
     {
-        Scanner teclado = new Scanner(System.in);
+        Scanner keyword = new Scanner(System.in);
 
-        double altura = info(teclado, "Informe a sua altura em cm");
-        double massa = info(teclado, "Informe a sua massa em kg");
-        double imc = massa / Math.pow(altura, 2);
-        System.out.println("Seu IMC é " + imc);
+        double height = info(keyword, "Type a cm height");
+        double mass = info(keyword, "Type a kg mass");
+        double imc = mass / Math.pow(height, 2);
+        System.out.println("Your IMC is " + imc);
 
-        teclado.close();
+        keyword.close();
     }    
 }

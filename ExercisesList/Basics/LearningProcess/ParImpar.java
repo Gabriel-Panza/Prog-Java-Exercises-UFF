@@ -5,15 +5,15 @@ class ParImpar
 {
     public static void main(String[] args) 
     {
-        Scanner teclado = new Scanner(System.in);
+        Scanner keyword = new Scanner(System.in);
         
-        System.out.print("Entre com um número: ");
-        int numero = teclado.nextInt();
+        System.out.print("Type a number: ");
+        int number = keyword.nextInt();
         
-        if (numero % 2 == 0)
-            System.out.println("O número é par!");
+        if (number % 2 == 0)
+            System.out.println("This number is even!");
         else
-            System.out.println("O número é impar!");
-        teclado.close();
+            System.out.println("This number is odd!");
+        keyword.close();
     }
 }

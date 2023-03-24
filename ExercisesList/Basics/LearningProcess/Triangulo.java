@@ -6,16 +6,16 @@ class Triangulo
     public static void main(String[] args) 
     {
         // Este codigo calcula a área de um triangulo
-        Scanner teclado = new Scanner(System.in);
-        int altura, base;
+        Scanner keyword = new Scanner(System.in);
+        int height, base;
         float area;
 
-        System.out.print("Informe a altura: ");
-        altura = teclado.nextInt();
-        System.out.print("Informe a base: ");
-        base = teclado.nextInt();
-        area = 0.5f * altura * base;
+        System.out.print("Type a height: ");
+        height = keyword.nextInt();
+        System.out.print("Type the base: ");
+        base = keyword.nextInt();
+        area = 0.5f * height * base;
         System.out.println("Area: " + area);
-        teclado.close();
+        keyword.close();
     }
 }

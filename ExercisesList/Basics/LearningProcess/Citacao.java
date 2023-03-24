@@ -5,25 +5,25 @@ public class Citacao
 {
     public static void main(String[] args) 
     {
-        Scanner teclado = new Scanner(System.in);
-        String iniciais = "";
-        String sobrenome = "";
+        Scanner keyboard = new Scanner(System.in);
+        String starters = "";
+        String surname = "";
         
-        System.out.print("Entre com um nome completo: ");
-        String nome = teclado.nextLine().trim();
+        System.out.print("Type a full name: ");
+        String nome = keyboard.nextLine().trim();
         
-        int inicio = 0;
-        int fim = nome.indexOf(" ", inicio);
-        while (fim != -1) 
+        int start = 0;
+        int end = nome.indexOf(" ", start);
+        while (end != -1) 
         {
-            iniciais += nome.substring(inicio, inicio + 1) + ". ";
-            inicio = fim + 1;
-            fim = nome.indexOf(" ", inicio);
+            starters += nome.substring(start, start + 1) + ". ";
+            start = end + 1;
+            end = nome.indexOf(" ", start);
         }
-        sobrenome = nome.substring(inicio).toUpperCase();
+        surname = nome.substring(start).toUpperCase();
         
-        System.out.print(sobrenome + ", ");
-        System.out.println(iniciais.toUpperCase().trim());
-        teclado.close();
+        System.out.print(surname + ", ");
+        System.out.println(starters.toUpperCase().trim());
+        keyboard.close();
     }    
 }

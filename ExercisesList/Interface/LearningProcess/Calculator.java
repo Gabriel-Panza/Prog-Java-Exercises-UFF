@@ -1,5 +1,3 @@
-package Interface.LearningProcess;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -18,30 +16,30 @@ public class Calculator
         JTextField numA = new JTextField(10);
         JLabel labelB = new JLabel("b = ");
         JTextField numB = new JTextField(10);
-        JButton botaoSoma = new JButton ("somar");
+        JButton addButton = new JButton ("add");
         
-        JLabel labelSoma = new JLabel("a+b = ");
-        JLabel labelResultado = new JLabel();
+        JLabel labelAdd = new JLabel("a+b = ");
+        JLabel labelResult = new JLabel();
         
         
         class Click implements ActionListener
         {
             public void actionPerformed(ActionEvent e)
             {
-                int resultado = Integer.parseInt(numA.getText()) + Integer.parseInt(numB.getText());
-                labelResultado.setText(Integer.toString(resultado));
+                int result = Integer.parseInt(numA.getText()) + Integer.parseInt(numB.getText());
+                labelResult.setText(Integer.toString(result));
             }
         }
-        botaoSoma.addActionListener(new Click());
+        addButton.addActionListener(new Click());
         
         painel.setLayout(new FlowLayout());
         painel.add(labelA);
         painel.add(numA);
         painel.add(labelB);
         painel.add(numB);
-        painel.add(botaoSoma);
-        painel.add(labelSoma);
-        painel.add(labelResultado);
+        painel.add(addButton);
+        painel.add(labelAdd);
+        painel.add(labelResult);
         frame.getContentPane().add(painel);
         frame.setVisible(true);
         

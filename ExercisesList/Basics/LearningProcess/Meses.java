@@ -5,30 +5,30 @@ class Meses
 {
     public static void main()
     {
-        Scanner teclado = new Scanner(System.in);
-        System.out.print("Entre com um mês (1 a 12): ");
-        byte mes = teclado.nextByte();
-        switch (mes) 
+        Scanner keyword = new Scanner(System.in);
+        System.out.print("Type a month (1 to 12): ");
+        byte month = keyword.nextByte();
+        switch (month) 
         {
             case 1: case 3: case 5: case 7: case 8: case 10: case 12:
-                System.out.println("Esse mês tem 31 dias!");
+                System.out.println("This month has 31 days!");
                 break;
 
             case 4: case 6: case 9: case 11:
-                System.out.println("Esse mês tem 30 dias!");
+                System.out.println("This month has 30 days!");
                 break;
 
             case 2:
-                System.out.print("Entre com o ano (4 dígitos): ");
-                short ano = teclado.nextShort();
-                if ((ano%400==0)||((ano%4==0)&&(ano%100!=0)))
-                    System.out.println("Esse mês tem 29 dias!");
+                System.out.print("Type a year with 4 digits: ");
+                short year = keyword.nextShort();
+                if ((year%400==0)||((year%4==0)&&(year%100!=0)))
+                    System.out.println("This month has 29 days!");
                 else
-                    System.out.println("Esse mês tem 28 dias!");
+                    System.out.println("This month has 28 days!");
                 break;
             default:
-                System.out.println("Mês inválido!");
+                System.out.println("Invalid month!");
         }
-        teclado.close();
+        keyword.close();
     }
 }

@@ -6,28 +6,28 @@ public class Error
 {
     public static void main(String[] args) 
     {
-        Scanner teclado = new Scanner(System.in);
+        Scanner keyword = new Scanner(System.in);
         
-        System.out.println("Informe dois valores: ");
-        int a = teclado.nextInt();
-        int b = teclado.nextInt();
-        String mensagem = null;
+        System.out.println("Type two values: ");
+        int a = keyword.nextInt();
+        int b = keyword.nextInt();
+        String message = null;
 
         try {
-            mensagem = getError(a, b);
+            message = getError(a, b);
         } 
         catch (ArithmeticException e) {
-            mensagem = "Nao foi possivel calcular divisao por 0 ou infinito";
+            message = "Error! Division with zero or infinity detected!";
         }
         finally{
-            System.out.println(mensagem);
+            System.out.println(message);
         }
-        teclado.close();
+        keyword.close();
     }
 
     public static String getError(int a, int b) throws ArithmeticException
     {
         int c = a/b;
-        return "O resultado eh: " + c;
+        return "The result is: " + c;
     }
 }

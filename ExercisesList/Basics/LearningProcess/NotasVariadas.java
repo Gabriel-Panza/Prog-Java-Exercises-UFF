@@ -5,31 +5,31 @@ public class NotasVariadas
 {
     public static void main(String[] args) 
     {
-        Scanner teclado = new Scanner(System.in);
-        int NUMERO_ALUNOS = teclado.nextInt();
+        Scanner keyword = new Scanner(System.in);
+        int students_numbers = keyword.nextInt();
         
-        String[] nomes = new String[NUMERO_ALUNOS];
-        float[] notas = new float[NUMERO_ALUNOS];
-        float media = 0;
+        String[] names = new String[students_numbers];
+        float[] grades = new float[students_numbers];
+        float average = 0;
         
-        for (int i = 0; i < NUMERO_ALUNOS; i++) 
+        for (int i = 0; i < students_numbers; i++) 
         {
-            System.out.print("Informe o nome do aluno "+(i+1)+": ");
-            nomes[i] = teclado.nextLine();
+            System.out.print("Type the name of the student "+(i+1)+": ");
+            names[i] = keyword.nextLine();
         }
-        for (int i = 0; i < NUMERO_ALUNOS; i++) 
+        for (int i = 0; i < students_numbers; i++) 
         {
-            System.out.print("Informe a nota de " + nomes[i] + ": ");
-            notas[i] = teclado.nextFloat();
-            media += notas[i];
+            System.out.print("Type the grade of " + names[i] + ": ");
+            grades[i] = keyword.nextFloat();
+            average += grades[i];
         }
-        media /= NUMERO_ALUNOS;
+        average /= students_numbers;
         
-        for (int i = 0; i < NUMERO_ALUNOS; i++) 
+        for (int i = 0; i < students_numbers; i++) 
         {
-            if (notas[i] > media)
-            System.out.println("Parabéns " + nomes[i]);
+            if (grades[i] > average)
+            System.out.println("Congratulations " + names[i]);
         }
-        teclado.close();
+        keyword.close();
     }
 }

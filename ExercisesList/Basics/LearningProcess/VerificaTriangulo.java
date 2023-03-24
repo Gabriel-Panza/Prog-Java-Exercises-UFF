@@ -5,17 +5,17 @@ class VerificaTriangulo
 {
     public static void main(String[] args) 
     {
-        Scanner teclado = new Scanner(System.in);
+        Scanner keyword = new Scanner(System.in);
         int x1, y1, x2, y2, x3, y3, det; 
         int L1, L2, L3, L4, L5, L6;
 
-        System.out.println("Digite suas 3 coordenadas par ordenadas: ");
-        x1 = teclado.nextInt();
-        y1 = teclado.nextInt();
-        x2 = teclado.nextInt();
-        y2 = teclado.nextInt();
-        x3 = teclado.nextInt();
-        y3 = teclado.nextInt();
+        System.out.println("Type the 3 ordered pair of coordinates: ");
+        x1 = keyword.nextInt();
+        y1 = keyword.nextInt();
+        x2 = keyword.nextInt();
+        y2 = keyword.nextInt();
+        x3 = keyword.nextInt();
+        y3 = keyword.nextInt();
 
         L1 = x1*y2;
         L2 = x2*y3;
@@ -27,17 +27,17 @@ class VerificaTriangulo
         det = (L1 + L2 + L3) - (L4 + L5 + L6);
         if (det==0)
         {
-            System.out.println("Essas coordenadas não formam um triangulo");
+            System.out.println("These coordinates arent a triangle");
         }
         else
         {
             if ((L1 == L2 && L2 == L3) || (L4 == L5 && L5 == L6))
-                System.out.println("Essas coordenadas formam um triangulo equilatero");
+                System.out.println("These coordinates form an equilateral triangle");
             else if ((L1 == L2 && L2 == L3) || (L4 != L5 && L5 != L6))
-                System.out.println("Essas coordenadas formam um triangulo isosceles");
+                System.out.println("These coordinates form an isosceles triangle");
             else
-                System.out.println("Essas coordenadas formam um triangulo escaleno");
+                System.out.println("These coordinates form a scalene triangle");
         }
-        teclado.close();
+        keyword.close();
     }    
 }
