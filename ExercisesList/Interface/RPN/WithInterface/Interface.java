@@ -6,7 +6,7 @@ import java.awt.event.*;
 
 public class Interface extends Calculadora
 {
-    public Interface()
+    public void CalculatorInterface()
     {
         // Cria a janela com um nome e aplico funcionalidades extras nela
         JFrame frame = new JFrame("Calculadora RPN");

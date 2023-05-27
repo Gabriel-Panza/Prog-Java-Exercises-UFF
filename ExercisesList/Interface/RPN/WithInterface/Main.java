@@ -1,14 +1,13 @@
 package Interface.RPN.WithInterface;
 
-public class Main extends Interface
+public class Main
 {
     public static void main(String[] args) 
     {
-        // Roda a minha calculadora
+        // Instancia a minha interface da calculadora
         Interface calc = new Interface();
 
-        // Mostra o nome da classe e em que pasta ela está
-        String nome = calc.getClass().getName();
-        System.out.println(nome);
+        // Roda a calculadora
+        calc.CalculatorInterface();
     }
 }
