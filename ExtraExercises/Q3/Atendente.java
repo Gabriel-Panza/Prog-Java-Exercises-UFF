@@ -1,0 +1,25 @@
+package ExtraExercises.Q3;
+
+public class Atendente implements Runnable {
+    private String nome;
+    private ColecaoClientes colecaoClientes;
+
+    public Atendente(String nome, ColecaoClientes colecaoClientes) {
+        this.nome = nome;
+        this.colecaoClientes = colecaoClientes;
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            Cliente cliente = colecaoClientes.obterProximoCliente();
+
+            if (cliente == null) {
+                System.out.println("Atendente " + nome + " encerrou.");
+                break;
+            }
+
+            System.out.println("Atendente " + nome + " atendendo cliente: " + cliente.getNome());
+        }
+    }
+}
