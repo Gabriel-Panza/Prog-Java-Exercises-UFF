@@ -15,11 +15,11 @@ public class Atendente implements Runnable {
             Cliente cliente = colecaoClientes.obterProximoCliente();
 
             if (cliente == null) {
-                System.out.println("Atendente " + nome + " encerrou.");
+                System.out.println(nome + " encerrou.");
                 break;
             }
 
-            System.out.println("Atendente " + nome + " atendendo cliente: " + cliente.getNome());
+            System.out.println(nome + " atendendo: " + cliente.getNome());
         }
     }
 }

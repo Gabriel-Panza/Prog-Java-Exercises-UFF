@@ -11,4 +11,13 @@ public class Professor extends Funcionario {
     public int getNivel() {
         return nivel;
     }
+
+    public void imprimirInformacoes() {
+        System.out.println("Nome: " + getNome());
+        System.out.println("CPF: " + getCpf());
+        System.out.println("Idade: " + getIdade());
+        System.out.println("Avaliaçao: " + getAvaliacao());
+        System.out.println("Nível: " + getNivel());
+        System.out.println("--------");
+    }
 }

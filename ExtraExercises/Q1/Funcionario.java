@@ -11,4 +11,12 @@ public class Funcionario extends Pessoa {
     public double getAvaliacao() {
         return avaliacao;
     }
+
+    public void imprimirInformacoes() {
+        System.out.println("Nome: " + getNome());
+        System.out.println("CPF: " + getCpf());
+        System.out.println("Idade: " + getIdade());
+        System.out.println("Avaliaçao: " + getAvaliacao());
+        System.out.println("--------");
+    }
 }
