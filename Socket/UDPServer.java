@@ -1,5 +1,3 @@
-import java.io.*;
-
 import java.net.*;
 
 class UDPServer {
@@ -13,7 +11,8 @@ class UDPServer {
         while(true) {
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
-            serverSocket.receive(receivePacket);String sentence = new String(receivePacket.getData());
+            serverSocket.receive(receivePacket);
+            String sentence = new String(receivePacket.getData());
 
             InetAddress IPAddress = receivePacket.getAddress();
 

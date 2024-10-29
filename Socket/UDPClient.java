@@ -8,7 +8,7 @@ class UDPClient {
 
         DatagramSocket clientSocket = new DatagramSocket();
 
-        InetAddress IPAddress = InetAddress.getByName("hostname");
+        InetAddress IPAddress = InetAddress.getByName("10.10.10.203");
 
         byte[ ] sendData = new byte[1024];
 
